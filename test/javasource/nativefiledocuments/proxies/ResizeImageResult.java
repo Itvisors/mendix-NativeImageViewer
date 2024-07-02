@@ -4,7 +4,7 @@
 
 package nativefiledocuments.proxies;
 
-public class ResizeImageResult
+public class ResizeImageResult implements com.mendix.systemwideinterfaces.core.IEntityProxy
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject resizeImageResultMendixObject;
 
@@ -58,15 +58,6 @@ public class ResizeImageResult
 	}
 
 	/**
-	 * @deprecated Use 'ResizeImageResult.load(IContext, IMendixIdentifier)' instead.
-	 */
-	@java.lang.Deprecated
-	public static nativefiledocuments.proxies.ResizeImageResult initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
-	{
-		return nativefiledocuments.proxies.ResizeImageResult.load(context, mendixIdentifier);
-	}
-
-	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
 	 * @param context The context to be used
@@ -84,39 +75,6 @@ public class ResizeImageResult
 		return nativefiledocuments.proxies.ResizeImageResult.initialize(context, mendixObject);
 	}
 
-	/**
-	 * Commit the changes made on this proxy object.
-	 * @throws com.mendix.core.CoreException
-	 */
-	public final void commit() throws com.mendix.core.CoreException
-	{
-		com.mendix.core.Core.commit(context, getMendixObject());
-	}
-
-	/**
-	 * Commit the changes made on this proxy object using the specified context.
-	 * @throws com.mendix.core.CoreException
-	 */
-	public final void commit(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
-	{
-		com.mendix.core.Core.commit(context, getMendixObject());
-	}
-
-	/**
-	 * Delete the object.
-	 */
-	public final void delete()
-	{
-		com.mendix.core.Core.delete(context, getMendixObject());
-	}
-
-	/**
-	 * Delete the object using the specified context.
-	 */
-	public final void delete(com.mendix.systemwideinterfaces.core.IContext context)
-	{
-		com.mendix.core.Core.delete(context, getMendixObject());
-	}
 	/**
 	 * @return value of ResizedWidth
 	 */
@@ -261,17 +219,13 @@ public class ResizeImageResult
 		getMendixObject().setValue(context, MemberNames.FilePath.toString(), filepath);
 	}
 
-	/**
-	 * @return the IMendixObject instance of this proxy for use in the Core interface.
-	 */
+	@java.lang.Override
 	public final com.mendix.systemwideinterfaces.core.IMendixObject getMendixObject()
 	{
 		return resizeImageResultMendixObject;
 	}
 
-	/**
-	 * @return the IContext instance of this proxy, or null if no IContext instance was specified at initialization.
-	 */
+	@java.lang.Override
 	public final com.mendix.systemwideinterfaces.core.IContext getContext()
 	{
 		return context;
@@ -297,21 +251,13 @@ public class ResizeImageResult
 		return getMendixObject().hashCode();
 	}
 
-	/**
-	 * @return String name of this class
-	 */
+  /**
+   * Gives full name ("Module.Entity" name) of the type of the entity.
+   *
+   * @return the name
+   */
 	public static java.lang.String getType()
 	{
 		return entityName;
-	}
-
-	/**
-	 * @return String GUID from this object, format: ID_0000000000
-	 * @deprecated Use getMendixObject().getId().toLong() to get a unique identifier for this object.
-	 */
-	@java.lang.Deprecated
-	public java.lang.String getGUID()
-	{
-		return "ID_" + getMendixObject().getId().toLong();
 	}
 }

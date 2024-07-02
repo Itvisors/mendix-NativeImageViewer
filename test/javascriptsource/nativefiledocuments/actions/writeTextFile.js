@@ -23,34 +23,49 @@ import { Platform } from 'react-native';
  * @param {"NativeFileDocuments.PathType.FullPath"|"NativeFileDocuments.PathType.DocumentsDirectory"} pathType
  * @param {string} textData
  * @param {boolean} append - Append to the existing file contents or write as only file contents.
- * @returns {Promise.<boolean>}
+ * @param {boolean} writeToLog
+ * @returns {Promise.<void>}
  */
-export async function writeTextFile(filepath, pathType, textData, append) {
+export async function writeTextFile(filepath, pathType, textData, append, writeToLog) {
 	// BEGIN USER CODE
 
-	return new Promise(function (resolve, reject) {
-		if (!filepath) {
-			reject(new Error("No file path specified"));
-		}
-		if (!pathType) {
-			reject(new Error("No path type specified"));
-		}
-		if (!textData) {
-			reject(new Error("No data specified"));
-		}
+	if (!filepath) {
+		Promise.reject(new Error("No file path specified"));
+	}
+	if (!pathType) {
+		Promise.reject(new Error("No path type specified"));
+	}
+	if (!textData) {
+		Promise.reject(new Error("No data specified"));
+	}
+	if (writeToLog) {
+		NativeFileDocumentsUtils.writeToLog({
+			actionName: "writeTextFile",
+			logType: "Parameters",
+			logMessage: JSON.stringify({
+				filepath: filepath,
+				pathType: pathType,
+				append: append ? "yes" : "no",
+				dataLength: textData.length
+			})
+		});
+	}
 
-		const fullPath = NativeFileDocumentsUtils.getFullPath(filepath, pathType, RNFS, Platform.OS);
+	const fullPath = NativeFileDocumentsUtils.getFullPath(filepath, pathType, RNFS, Platform.OS);
 
-		if (append) {
-			RNFS.appendFile(fullPath, textData, "utf8").then(() => {
-				resolve(true);
-			});
-		} else {
-			RNFS.writeFile(fullPath, textData, "utf8").then(() => {
-				resolve(true);
-			});
-		}
-	});
+	if (writeToLog) {
+		NativeFileDocumentsUtils.writeToLog({
+			actionName: "writeTextFile",
+			logType: "Info",
+			logMessage: "Full path: " + fullPath
+		});
+	}
+
+	if (append) {
+		return RNFS.appendFile(fullPath, textData, "utf8");
+	} else {
+		return RNFS.writeFile(fullPath, textData, "utf8");
+	}
 
 	// END USER CODE
 }

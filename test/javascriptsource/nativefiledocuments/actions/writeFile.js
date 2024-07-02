@@ -22,47 +22,43 @@ import { Platform } from 'react-native';
  * @param {"NativeFileDocuments.PathType.FullPath"|"NativeFileDocuments.PathType.DocumentsDirectory"} pathType
  * @param {string} base64Data
  * @param {boolean} writeToLog
- * @returns {Promise.<boolean>}
+ * @returns {Promise.<void>}
  */
 export async function writeFile(filepath, pathType, base64Data, writeToLog) {
 	// BEGIN USER CODE
 
-	return new Promise(function (resolve, reject) {
-		if (!filepath) {
-			reject(new Error("No file path specified"));
-		}
-		if (!pathType) {
-			reject(new Error("No path type specified"));
-		}
-		if (!base64Data) {
-			reject(new Error("No data specified"));
-		}
-		if (writeToLog) {
-			NativeFileDocumentsUtils.writeToLog({
-				actionName: "writeFile",
-				logType: "Parameters",
-				logMessage: JSON.stringify({
-					filepath: filepath,
-					pathType: pathType,
-					dataLength: base64Data.length
-				})
-			});
-		}
-
-		const fullPath = NativeFileDocumentsUtils.getFullPath(filepath, pathType, RNFS, Platform.OS);
-
-		if (writeToLog) {
-			NativeFileDocumentsUtils.writeToLog({
-				actionName: "writeFile",
-				logType: "Info",
-				logMessage: "Full path: " + fullPath
-			});
-		}
-
-		RNFS.writeFile(fullPath, base64Data, "base64").then(() => {
-			resolve(true);
+	if (!filepath) {
+		Promise.reject(new Error("No file path specified"));
+	}
+	if (!pathType) {
+		Promise.reject(new Error("No path type specified"));
+	}
+	if (!base64Data) {
+		Promise.reject(new Error("No data specified"));
+	}
+	if (writeToLog) {
+		NativeFileDocumentsUtils.writeToLog({
+			actionName: "writeFile",
+			logType: "Parameters",
+			logMessage: JSON.stringify({
+				filepath: filepath,
+				pathType: pathType,
+				dataLength: base64Data.length
+			})
 		});
-	});
+	}
+
+	const fullPath = NativeFileDocumentsUtils.getFullPath(filepath, pathType, RNFS, Platform.OS);
+
+	if (writeToLog) {
+		NativeFileDocumentsUtils.writeToLog({
+			actionName: "writeFile",
+			logType: "Info",
+			logMessage: "Full path: " + fullPath
+		});
+	}
+
+	return RNFS.writeFile(fullPath, base64Data, "base64");
 
 	// END USER CODE
 }

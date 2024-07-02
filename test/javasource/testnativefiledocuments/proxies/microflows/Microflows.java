@@ -4,50 +4,110 @@
 
 package testnativefiledocuments.proxies.microflows;
 
-import java.util.HashMap;
-import java.util.Map;
 import com.mendix.core.Core;
 import com.mendix.systemwideinterfaces.core.IContext;
 
-public class Microflows
+public final class Microflows
 {
 	/**
-	 * @deprecated
-	 * The default constructor of the Microflows class should not be used.
-	 * Use the static microflow invocation methods instead.
+	 * Private constructor to prevent instantiation of this class. 
 	 */
-	@java.lang.Deprecated(since = "9.12", forRemoval = true)
-	public Microflows() {}
+	private Microflows() {}
 
 	// These are the microflows for the TestNativeFileDocuments module
-	public static void aCT_ImageToResize_Save(IContext context, testnativefiledocuments.proxies.ImageToResize _testImageToResize)
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder aCT_ImageToResize_SaveBuilder(
+		testnativefiledocuments.proxies.ImageToResize _testImageToResize
+	)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("TestImageToResize", _testImageToResize == null ? null : _testImageToResize.getMendixObject());
-		Core.microflowCall("TestNativeFileDocuments.ACT_ImageToResize_Save").withParams(params).execute(context);
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("TestNativeFileDocuments.ACT_ImageToResize_Save");
+		builder = builder.withParam("TestImageToResize", _testImageToResize);
+		return builder;
 	}
-	public static void aCT_TestCropImage_Save(IContext context, testnativefiledocuments.proxies.TestCropImage _testCropImage)
+
+	public static void aCT_ImageToResize_Save(
+		IContext context,
+		testnativefiledocuments.proxies.ImageToResize _testImageToResize
+	)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("TestCropImage", _testCropImage == null ? null : _testCropImage.getMendixObject());
-		Core.microflowCall("TestNativeFileDocuments.ACT_TestCropImage_Save").withParams(params).execute(context);
+		aCT_ImageToResize_SaveBuilder(
+				_testImageToResize
+			)
+			.execute(context);
 	}
-	public static void aCT_TestDocument_Save(IContext context, testnativefiledocuments.proxies.TestDocument _testDocument)
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder aCT_TestCropImage_SaveBuilder(
+		testnativefiledocuments.proxies.TestCropImage _testCropImage
+	)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("TestDocument", _testDocument == null ? null : _testDocument.getMendixObject());
-		Core.microflowCall("TestNativeFileDocuments.ACT_TestDocument_Save").withParams(params).execute(context);
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("TestNativeFileDocuments.ACT_TestCropImage_Save");
+		builder = builder.withParam("TestCropImage", _testCropImage);
+		return builder;
 	}
-	public static void aCT_TestWriteFile_Save(IContext context, testnativefiledocuments.proxies.TestWriteFile _testWriteFile)
+
+	public static void aCT_TestCropImage_Save(
+		IContext context,
+		testnativefiledocuments.proxies.TestCropImage _testCropImage
+	)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("TestWriteFile", _testWriteFile == null ? null : _testWriteFile.getMendixObject());
-		Core.microflowCall("TestNativeFileDocuments.ACT_TestWriteFile_Save").withParams(params).execute(context);
+		aCT_TestCropImage_SaveBuilder(
+				_testCropImage
+			)
+			.execute(context);
 	}
-	public static void aCT_TestWriteFileResult_Download(IContext context, testnativefiledocuments.proxies.TestWriteFileResult _testWriteFileResult)
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder aCT_TestDocument_SaveBuilder(
+		testnativefiledocuments.proxies.TestDocument _testDocument
+	)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("TestWriteFileResult", _testWriteFileResult == null ? null : _testWriteFileResult.getMendixObject());
-		Core.microflowCall("TestNativeFileDocuments.ACT_TestWriteFileResult_Download").withParams(params).execute(context);
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("TestNativeFileDocuments.ACT_TestDocument_Save");
+		builder = builder.withParam("TestDocument", _testDocument);
+		return builder;
+	}
+
+	public static void aCT_TestDocument_Save(
+		IContext context,
+		testnativefiledocuments.proxies.TestDocument _testDocument
+	)
+	{
+		aCT_TestDocument_SaveBuilder(
+				_testDocument
+			)
+			.execute(context);
+	}
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder aCT_TestWriteFile_SaveBuilder(
+		testnativefiledocuments.proxies.TestWriteFile _testWriteFile
+	)
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("TestNativeFileDocuments.ACT_TestWriteFile_Save");
+		builder = builder.withParam("TestWriteFile", _testWriteFile);
+		return builder;
+	}
+
+	public static void aCT_TestWriteFile_Save(
+		IContext context,
+		testnativefiledocuments.proxies.TestWriteFile _testWriteFile
+	)
+	{
+		aCT_TestWriteFile_SaveBuilder(
+				_testWriteFile
+			)
+			.execute(context);
+	}
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder aCT_TestWriteFileResult_DownloadBuilder(
+		testnativefiledocuments.proxies.TestWriteFileResult _testWriteFileResult
+	)
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("TestNativeFileDocuments.ACT_TestWriteFileResult_Download");
+		builder = builder.withParam("TestWriteFileResult", _testWriteFileResult);
+		return builder;
+	}
+
+	public static void aCT_TestWriteFileResult_Download(
+		IContext context,
+		testnativefiledocuments.proxies.TestWriteFileResult _testWriteFileResult
+	)
+	{
+		aCT_TestWriteFileResult_DownloadBuilder(
+				_testWriteFileResult
+			)
+			.execute(context);
 	}
 }

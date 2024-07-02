@@ -6,24 +6,21 @@ package nativefiledocuments.proxies.constants;
 
 import com.mendix.core.Core;
 
-public class Constants
+public final class Constants
 {
 	/**
-	 * @deprecated
-	 * The default constructor of the Constants class should not be used.
-	 * Use the static get methods instead.
+	 * Private constructor to prevent instantiation of this class. 
 	 */
-	@java.lang.Deprecated(since = "9.12", forRemoval = true)
-	public Constants() {}
+	private Constants() {}
 
 	// These are the constants for the NativeFileDocuments module
 
 	/**
-	* Number of log files on the device to keep, zero or negative means no cleanup
+	* Log retention in days, zero or negative means no cleanup
 	*/
-	public static java.lang.Long getDEVICE_LOG_FILE_RETENTION()
+	public static java.lang.Long getLOG_FILE_RETENTION()
 	{
-		return (java.lang.Long)Core.getConfiguration().getConstantValue("NativeFileDocuments.DEVICE_LOG_FILE_RETENTION");
+		return (java.lang.Long)Core.getConfiguration().getConstantValue("NativeFileDocuments.LOG_FILE_RETENTION");
 	}
 
 	/**

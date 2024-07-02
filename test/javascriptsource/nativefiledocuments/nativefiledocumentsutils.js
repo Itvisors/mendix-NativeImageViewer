@@ -99,7 +99,7 @@ const writeToLog = (logData) => {
         mx.data.commit({
             mxobj: newLog,
             callback: function() {
-                console.log("Log entry written");
+                // console.log("Log entry written");
             },
             error: function(e) {
                 Promise.reject(new Error("Could not commit new native action log object: " + e.message));

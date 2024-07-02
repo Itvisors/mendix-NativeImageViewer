@@ -26,6 +26,7 @@ public class ImageToResize extends system.proxies.Image
 		KeepMetaData("KeepMetaData"),
 		ResizeMode("ResizeMode"),
 		PublicThumbnailPath("PublicThumbnailPath"),
+		EnableCaching("EnableCaching"),
 		FileID("FileID"),
 		Name("Name"),
 		DeleteAfterDownload("DeleteAfterDownload"),
@@ -58,15 +59,6 @@ public class ImageToResize extends system.proxies.Image
 		if (!com.mendix.core.Core.isSubClassOf(entityName, imageToResizeMendixObject.getType())) {
 			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
 		}	
-	}
-
-	/**
-	 * @deprecated Use 'ImageToResize.load(IContext, IMendixIdentifier)' instead.
-	 */
-	@java.lang.Deprecated
-	public static testnativefiledocuments.proxies.ImageToResize initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
-	{
-		return testnativefiledocuments.proxies.ImageToResize.load(context, mendixIdentifier);
 	}
 
 	/**
@@ -241,7 +233,7 @@ public class ImageToResize extends system.proxies.Image
 	}
 
 	/**
-	 * Set value of CompressionFormat
+	 * Get value of CompressionFormat
 	 * @param compressionformat
 	 */
 	public final nativefiledocuments.proxies.ResizeImageCompressionFormat getCompressionFormat()
@@ -394,7 +386,7 @@ public class ImageToResize extends system.proxies.Image
 	}
 
 	/**
-	 * Set value of ResizeMode
+	 * Get value of ResizeMode
 	 * @param resizemode
 	 */
 	public final nativefiledocuments.proxies.ResizeImageMode getResizeMode()
@@ -458,22 +450,13 @@ public class ImageToResize extends system.proxies.Image
 		return getMendixObject().hashCode();
 	}
 
-	/**
-	 * @return String name of this class
-	 */
+  /**
+   * Gives full name ("Module.Entity" name) of the type of the entity.
+   *
+   * @return the name
+   */
 	public static java.lang.String getType()
 	{
 		return entityName;
-	}
-
-	/**
-	 * @return String GUID from this object, format: ID_0000000000
-	 * @deprecated Use getMendixObject().getId().toLong() to get a unique identifier for this object.
-	 */
-	@java.lang.Override
-	@java.lang.Deprecated
-	public java.lang.String getGUID()
-	{
-		return "ID_" + getMendixObject().getId().toLong();
 	}
 }

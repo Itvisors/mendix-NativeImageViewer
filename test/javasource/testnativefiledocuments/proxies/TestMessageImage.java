@@ -17,6 +17,7 @@ public class TestMessageImage extends system.proxies.Image
 	public enum MemberNames
 	{
 		PublicThumbnailPath("PublicThumbnailPath"),
+		EnableCaching("EnableCaching"),
 		FileID("FileID"),
 		Name("Name"),
 		DeleteAfterDownload("DeleteAfterDownload"),
@@ -50,15 +51,6 @@ public class TestMessageImage extends system.proxies.Image
 		if (!com.mendix.core.Core.isSubClassOf(entityName, testMessageImageMendixObject.getType())) {
 			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
 		}	
-	}
-
-	/**
-	 * @deprecated Use 'TestMessageImage.load(IContext, IMendixIdentifier)' instead.
-	 */
-	@java.lang.Deprecated
-	public static testnativefiledocuments.proxies.TestMessageImage initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
-	{
-		return testnativefiledocuments.proxies.TestMessageImage.load(context, mendixIdentifier);
 	}
 
 	/**
@@ -155,22 +147,13 @@ public class TestMessageImage extends system.proxies.Image
 		return getMendixObject().hashCode();
 	}
 
-	/**
-	 * @return String name of this class
-	 */
+  /**
+   * Gives full name ("Module.Entity" name) of the type of the entity.
+   *
+   * @return the name
+   */
 	public static java.lang.String getType()
 	{
 		return entityName;
-	}
-
-	/**
-	 * @return String GUID from this object, format: ID_0000000000
-	 * @deprecated Use getMendixObject().getId().toLong() to get a unique identifier for this object.
-	 */
-	@java.lang.Override
-	@java.lang.Deprecated
-	public java.lang.String getGUID()
-	{
-		return "ID_" + getMendixObject().getId().toLong();
 	}
 }

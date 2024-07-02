@@ -4,36 +4,65 @@
 
 package nativefiledocuments.proxies.microflows;
 
-import java.util.HashMap;
-import java.util.Map;
 import com.mendix.core.Core;
 import com.mendix.systemwideinterfaces.core.IContext;
 
-public class Microflows
+public final class Microflows
 {
 	/**
-	 * @deprecated
-	 * The default constructor of the Microflows class should not be used.
-	 * Use the static microflow invocation methods instead.
+	 * Private constructor to prevent instantiation of this class. 
 	 */
-	@java.lang.Deprecated(since = "9.12", forRemoval = true)
-	public Microflows() {}
+	private Microflows() {}
 
 	// These are the microflows for the NativeFileDocuments module
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder aSu_NativeFileDocumentsBuilder()
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("NativeFileDocuments.ASu_NativeFileDocuments");
+		return builder;
+	}
+
 	public static void aSu_NativeFileDocuments(IContext context)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		Core.microflowCall("NativeFileDocuments.ASu_NativeFileDocuments").withParams(params).execute(context);
+		aSu_NativeFileDocumentsBuilder().execute(context);
 	}
-	public static boolean bCo_NativeActionLog(IContext context, nativefiledocuments.proxies.NativeActionLog _nativeActionLog)
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder bCo_NativeActionLogBuilder(
+		nativefiledocuments.proxies.NativeActionLog _nativeActionLog
+	)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		params.put("NativeActionLog", _nativeActionLog == null ? null : _nativeActionLog.getMendixObject());
-		return (java.lang.Boolean) Core.microflowCall("NativeFileDocuments.BCo_NativeActionLog").withParams(params).execute(context);
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("NativeFileDocuments.BCo_NativeActionLog");
+		builder = builder.withParam("NativeActionLog", _nativeActionLog);
+		return builder;
 	}
+
+	public static boolean bCo_NativeActionLog(
+		IContext context,
+		nativefiledocuments.proxies.NativeActionLog _nativeActionLog
+	)
+	{
+		Object result = bCo_NativeActionLogBuilder(
+				_nativeActionLog
+			)
+			.execute(context);
+		return (boolean) result;
+	}
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder sCE_DeviceLogFile_CleanupBuilder()
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("NativeFileDocuments.SCE_DeviceLogFile_Cleanup");
+		return builder;
+	}
+
+	public static void sCE_DeviceLogFile_Cleanup(IContext context)
+	{
+		sCE_DeviceLogFile_CleanupBuilder().execute(context);
+	}
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder sCE_NativeActionLog_CleanupBuilder()
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("NativeFileDocuments.SCE_NativeActionLog_Cleanup");
+		return builder;
+	}
+
 	public static void sCE_NativeActionLog_Cleanup(IContext context)
 	{
-		Map<java.lang.String, Object> params = new HashMap<>();
-		Core.microflowCall("NativeFileDocuments.SCE_NativeActionLog_Cleanup").withParams(params).execute(context);
+		sCE_NativeActionLog_CleanupBuilder().execute(context);
 	}
 }

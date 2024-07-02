@@ -4,7 +4,7 @@
 
 package nativefiledocuments.proxies;
 
-public class ImageCropMetaData
+public class ImageCropMetaData implements com.mendix.systemwideinterfaces.core.IEntityProxy
 {
 	private final com.mendix.systemwideinterfaces.core.IMendixObject imageCropMetaDataMendixObject;
 
@@ -59,15 +59,6 @@ public class ImageCropMetaData
 	}
 
 	/**
-	 * @deprecated Use 'ImageCropMetaData.load(IContext, IMendixIdentifier)' instead.
-	 */
-	@java.lang.Deprecated
-	public static nativefiledocuments.proxies.ImageCropMetaData initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixIdentifier mendixIdentifier) throws com.mendix.core.CoreException
-	{
-		return nativefiledocuments.proxies.ImageCropMetaData.load(context, mendixIdentifier);
-	}
-
-	/**
 	 * Initialize a proxy using context (recommended). This context will be used for security checking when the get- and set-methods without context parameters are called.
 	 * The get- and set-methods with context parameter should be used when for instance sudo access is necessary (IContext.createSudoClone() can be used to obtain sudo access).
 	 * @param context The context to be used
@@ -85,39 +76,6 @@ public class ImageCropMetaData
 		return nativefiledocuments.proxies.ImageCropMetaData.initialize(context, mendixObject);
 	}
 
-	/**
-	 * Commit the changes made on this proxy object.
-	 * @throws com.mendix.core.CoreException
-	 */
-	public final void commit() throws com.mendix.core.CoreException
-	{
-		com.mendix.core.Core.commit(context, getMendixObject());
-	}
-
-	/**
-	 * Commit the changes made on this proxy object using the specified context.
-	 * @throws com.mendix.core.CoreException
-	 */
-	public final void commit(com.mendix.systemwideinterfaces.core.IContext context) throws com.mendix.core.CoreException
-	{
-		com.mendix.core.Core.commit(context, getMendixObject());
-	}
-
-	/**
-	 * Delete the object.
-	 */
-	public final void delete()
-	{
-		com.mendix.core.Core.delete(context, getMendixObject());
-	}
-
-	/**
-	 * Delete the object using the specified context.
-	 */
-	public final void delete(com.mendix.systemwideinterfaces.core.IContext context)
-	{
-		com.mendix.core.Core.delete(context, getMendixObject());
-	}
 	/**
 	 * @return value of ImageCropped
 	 */
@@ -298,17 +256,13 @@ public class ImageCropMetaData
 		getMendixObject().setValue(context, MemberNames.CroppedSize.toString(), croppedsize);
 	}
 
-	/**
-	 * @return the IMendixObject instance of this proxy for use in the Core interface.
-	 */
+	@java.lang.Override
 	public final com.mendix.systemwideinterfaces.core.IMendixObject getMendixObject()
 	{
 		return imageCropMetaDataMendixObject;
 	}
 
-	/**
-	 * @return the IContext instance of this proxy, or null if no IContext instance was specified at initialization.
-	 */
+	@java.lang.Override
 	public final com.mendix.systemwideinterfaces.core.IContext getContext()
 	{
 		return context;
@@ -334,21 +288,13 @@ public class ImageCropMetaData
 		return getMendixObject().hashCode();
 	}
 
-	/**
-	 * @return String name of this class
-	 */
+  /**
+   * Gives full name ("Module.Entity" name) of the type of the entity.
+   *
+   * @return the name
+   */
 	public static java.lang.String getType()
 	{
 		return entityName;
-	}
-
-	/**
-	 * @return String GUID from this object, format: ID_0000000000
-	 * @deprecated Use getMendixObject().getId().toLong() to get a unique identifier for this object.
-	 */
-	@java.lang.Deprecated
-	public java.lang.String getGUID()
-	{
-		return "ID_" + getMendixObject().getId().toLong();
 	}
 }
