@@ -1,7 +1,7 @@
 {
   "name": "nativeimageviewer",
   "widgetName": "NativeImageViewer",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "Mendix native image viewer",
   "copyright": "ITvisors 2020",
   "author": "Marcel Groeneweg",
@@ -22,7 +22,7 @@
     "release": "pluggable-widgets-tools release:native"
   },
   "devDependencies": {
-    "@mendix/pluggable-widgets-tools": "^10.12.0"
+    "@mendix/pluggable-widgets-tools": "^10.18.0"
   },
   "dependencies": {
     "@openspacelabs/react-native-zoomable-view": "^2.1.6"
