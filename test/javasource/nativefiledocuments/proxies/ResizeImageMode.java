@@ -6,27 +6,25 @@ package nativefiledocuments.proxies;
 
 public enum ResizeImageMode
 {
-	contain(new java.lang.String[][] { new java.lang.String[] { "en_US", "contain" } }),
-	cover(new java.lang.String[][] { new java.lang.String[] { "en_US", "cover" } }),
-	stretch(new java.lang.String[][] { new java.lang.String[] { "en_US", "stretch" } });
+	contain("59401f18-01d6-44e8-bc74-7dd2c01d4c79"),
+	cover("68ee37f1-046c-4736-a834-71122d40b4e0"),
+	stretch("7428ec84-7cdd-402d-9891-59bef84c40c1");
 
-	private final java.util.Map<java.lang.String, java.lang.String> captions;
-
-	private ResizeImageMode(java.lang.String[][] captionStrings)
+	private final java.lang.String i18nCaptionKey;
+	
+	private ResizeImageMode(java.lang.String i18nCaptionKey)
 	{
-		this.captions = new java.util.HashMap<>();
-		for (java.lang.String[] captionString : captionStrings) {
-			captions.put(captionString[0], captionString[1]);
-		}
+		this.i18nCaptionKey = i18nCaptionKey;
 	}
 
 	public java.lang.String getCaption(java.lang.String languageCode)
 	{
-		return captions.getOrDefault(languageCode, "en_US");
+		String caption = com.mendix.core.Core.getInternationalizedString(languageCode, i18nCaptionKey);
+		return caption.isEmpty() ? getCaption() : caption;
 	}
 
 	public java.lang.String getCaption()
 	{
-		return captions.get("en_US");
+		return com.mendix.core.Core.getInternationalizedString("en_US", i18nCaptionKey);
 	}
 }

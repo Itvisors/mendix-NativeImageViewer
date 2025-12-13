@@ -6,31 +6,29 @@ package nativefiledocuments.proxies;
 
 public enum LogLevel
 {
-	trace(new java.lang.String[][] { new java.lang.String[] { "en_US", "Trace" } }),
-	debug(new java.lang.String[][] { new java.lang.String[] { "en_US", "Debug" } }),
-	info(new java.lang.String[][] { new java.lang.String[] { "en_US", "Info" } }),
-	warning(new java.lang.String[][] { new java.lang.String[] { "en_US", "Warning" } }),
-	error(new java.lang.String[][] { new java.lang.String[] { "en_US", "Error" } }),
-	critical(new java.lang.String[][] { new java.lang.String[] { "en_US", "Critical" } }),
-	none(new java.lang.String[][] { new java.lang.String[] { "en_US", "None" } });
+	trace("bf203caf-4390-4117-a062-9eb76d642c22"),
+	debug("ad961f37-5bef-4ad2-81da-445da9a64664"),
+	info("984282ad-7b8b-4933-81e8-1292acf0b772"),
+	warning("4f681a97-9c8b-45f1-a0bb-65eeefb5fb2a"),
+	error("c23a081f-d804-4c8d-adb5-3724814727dc"),
+	critical("123aaa29-e52f-4e7a-adfd-8a90b83233a9"),
+	none("601d26c2-1902-4ed0-9a99-5d00e50f7d80");
 
-	private final java.util.Map<java.lang.String, java.lang.String> captions;
-
-	private LogLevel(java.lang.String[][] captionStrings)
+	private final java.lang.String i18nCaptionKey;
+	
+	private LogLevel(java.lang.String i18nCaptionKey)
 	{
-		this.captions = new java.util.HashMap<>();
-		for (java.lang.String[] captionString : captionStrings) {
-			captions.put(captionString[0], captionString[1]);
-		}
+		this.i18nCaptionKey = i18nCaptionKey;
 	}
 
 	public java.lang.String getCaption(java.lang.String languageCode)
 	{
-		return captions.getOrDefault(languageCode, "en_US");
+		String caption = com.mendix.core.Core.getInternationalizedString(languageCode, i18nCaptionKey);
+		return caption.isEmpty() ? getCaption() : caption;
 	}
 
 	public java.lang.String getCaption()
 	{
-		return captions.get("en_US");
+		return com.mendix.core.Core.getInternationalizedString("en_US", i18nCaptionKey);
 	}
 }

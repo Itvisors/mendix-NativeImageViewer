@@ -6,27 +6,25 @@ package nativefiledocuments.proxies;
 
 public enum FileLogLevel
 {
-	Info(new java.lang.String[][] { new java.lang.String[] { "en_US", "Info" } }),
-	Warning(new java.lang.String[][] { new java.lang.String[] { "en_US", "Warning" } }),
-	Error(new java.lang.String[][] { new java.lang.String[] { "en_US", "Error" } });
+	Info("87daa717-1f4a-41cb-99e3-d559e7b5160b"),
+	Warning("640bcfc6-1b21-4647-9f3f-1ff5394b9bdf"),
+	Error("f2c9426c-aee9-4211-a1e5-f93bd7eab1b0");
 
-	private final java.util.Map<java.lang.String, java.lang.String> captions;
-
-	private FileLogLevel(java.lang.String[][] captionStrings)
+	private final java.lang.String i18nCaptionKey;
+	
+	private FileLogLevel(java.lang.String i18nCaptionKey)
 	{
-		this.captions = new java.util.HashMap<>();
-		for (java.lang.String[] captionString : captionStrings) {
-			captions.put(captionString[0], captionString[1]);
-		}
+		this.i18nCaptionKey = i18nCaptionKey;
 	}
 
 	public java.lang.String getCaption(java.lang.String languageCode)
 	{
-		return captions.getOrDefault(languageCode, "en_US");
+		String caption = com.mendix.core.Core.getInternationalizedString(languageCode, i18nCaptionKey);
+		return caption.isEmpty() ? getCaption() : caption;
 	}
 
 	public java.lang.String getCaption()
 	{
-		return captions.get("en_US");
+		return com.mendix.core.Core.getInternationalizedString("en_US", i18nCaptionKey);
 	}
 }

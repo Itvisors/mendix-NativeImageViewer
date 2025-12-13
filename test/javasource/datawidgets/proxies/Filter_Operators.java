@@ -6,36 +6,34 @@ package datawidgets.proxies;
 
 public enum Filter_Operators
 {
-	contains(new java.lang.String[][] { new java.lang.String[] { "en_US", "Contains" } }),
-	startsWith(new java.lang.String[][] { new java.lang.String[] { "en_US", "Starts with" } }),
-	endsWith(new java.lang.String[][] { new java.lang.String[] { "en_US", "Ends with" } }),
-	between(new java.lang.String[][] { new java.lang.String[] { "en_US", "Between" } }),
-	greater(new java.lang.String[][] { new java.lang.String[] { "en_US", "Greater than" } }),
-	greaterEqual(new java.lang.String[][] { new java.lang.String[] { "en_US", "Greater than or equal" } }),
-	equal(new java.lang.String[][] { new java.lang.String[] { "en_US", "Equal" } }),
-	notEqual(new java.lang.String[][] { new java.lang.String[] { "en_US", "Not equal" } }),
-	smaller(new java.lang.String[][] { new java.lang.String[] { "en_US", "Smaller than" } }),
-	smallerEqual(new java.lang.String[][] { new java.lang.String[] { "en_US", "Smaller than or equal" } }),
-	empty(new java.lang.String[][] { new java.lang.String[] { "en_US", "Empty" } }),
-	notEmpty(new java.lang.String[][] { new java.lang.String[] { "en_US", "Not empty" } });
+	contains("878affd6-89b6-43a7-ba85-a4fef02d3ad4"),
+	startsWith("d3d6fb71-f0d0-47e5-8006-d4189cf3fdd1"),
+	endsWith("45b74f2f-0d39-4655-b12e-6ac3c86e449a"),
+	between("0b2763f1-d6ec-4432-8537-d5745d359bed"),
+	greater("dc831739-0f70-4e1b-a30f-1b9b5e3b4d3d"),
+	greaterEqual("ae6d566f-993e-42cf-accf-c718c7abece2"),
+	equal("6fbf12ed-452e-4951-9dab-f4bca84462ca"),
+	notEqual("5856b654-ed78-48f5-8604-431ffb7203c8"),
+	smaller("d3b89a3d-8934-4a06-aacc-49855e10b7ef"),
+	smallerEqual("280cc21f-eee0-419b-ac3a-b31e1fb3b69d"),
+	empty("a2437e96-e3b6-40e3-ba60-7fd80d581276"),
+	notEmpty("4ee33378-7f6c-45b7-9aa7-0b20440a8ebe");
 
-	private final java.util.Map<java.lang.String, java.lang.String> captions;
-
-	private Filter_Operators(java.lang.String[][] captionStrings)
+	private final java.lang.String i18nCaptionKey;
+	
+	private Filter_Operators(java.lang.String i18nCaptionKey)
 	{
-		this.captions = new java.util.HashMap<>();
-		for (java.lang.String[] captionString : captionStrings) {
-			captions.put(captionString[0], captionString[1]);
-		}
+		this.i18nCaptionKey = i18nCaptionKey;
 	}
 
 	public java.lang.String getCaption(java.lang.String languageCode)
 	{
-		return captions.getOrDefault(languageCode, "en_US");
+		String caption = com.mendix.core.Core.getInternationalizedString(languageCode, i18nCaptionKey);
+		return caption.isEmpty() ? getCaption() : caption;
 	}
 
 	public java.lang.String getCaption()
 	{
-		return captions.get("en_US");
+		return com.mendix.core.Core.getInternationalizedString("en_US", i18nCaptionKey);
 	}
 }

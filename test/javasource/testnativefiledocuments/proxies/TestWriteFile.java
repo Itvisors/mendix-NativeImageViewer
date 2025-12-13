@@ -46,7 +46,7 @@ public class TestWriteFile extends system.proxies.FileDocument
 	protected TestWriteFile(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject testWriteFileMendixObject)
 	{
 		super(context, testWriteFileMendixObject);
-		if (!com.mendix.core.Core.isSubClassOf(entityName, testWriteFileMendixObject.getType())) {
+		if (!testWriteFileMendixObject.isInstanceOf(entityName)) {
 			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
 		}	
 	}

@@ -49,7 +49,7 @@ public class TestMessage implements com.mendix.systemwideinterfaces.core.IEntity
 		if (testMessageMendixObject == null) {
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
 		}
-		if (!com.mendix.core.Core.isSubClassOf(entityName, testMessageMendixObject.getType())) {
+		if (!testMessageMendixObject.isInstanceOf(entityName)) {
 			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
 		}	
 

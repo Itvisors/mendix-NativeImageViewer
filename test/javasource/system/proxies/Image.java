@@ -50,7 +50,7 @@ public class Image extends system.proxies.FileDocument
 	protected Image(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject imageMendixObject)
 	{
 		super(context, imageMendixObject);
-		if (!com.mendix.core.Core.isSubClassOf(entityName, imageMendixObject.getType())) {
+		if (!imageMendixObject.isInstanceOf(entityName)) {
 			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
 		}	
 	}
@@ -64,22 +64,22 @@ public class Image extends system.proxies.FileDocument
 	 */
 	public static system.proxies.Image initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
-		if (com.mendix.core.Core.isSubClassOf("TestNativeFileDocuments.CroppedImage", mendixObject.getType())) {
+		if (mendixObject.isInstanceOf("TestNativeFileDocuments.CroppedImage")) {
 			return testnativefiledocuments.proxies.CroppedImage.initialize(context, mendixObject);
 		}
-		if (com.mendix.core.Core.isSubClassOf("TestNativeFileDocuments.ImageToResize", mendixObject.getType())) {
+		if (mendixObject.isInstanceOf("TestNativeFileDocuments.ImageToResize")) {
 			return testnativefiledocuments.proxies.ImageToResize.initialize(context, mendixObject);
 		}
-		if (com.mendix.core.Core.isSubClassOf("TestNativeFileDocuments.ResizedImage", mendixObject.getType())) {
+		if (mendixObject.isInstanceOf("TestNativeFileDocuments.ResizedImage")) {
 			return testnativefiledocuments.proxies.ResizedImage.initialize(context, mendixObject);
 		}
-		if (com.mendix.core.Core.isSubClassOf("TestNativeFileDocuments.TestCropImage", mendixObject.getType())) {
+		if (mendixObject.isInstanceOf("TestNativeFileDocuments.TestCropImage")) {
 			return testnativefiledocuments.proxies.TestCropImage.initialize(context, mendixObject);
 		}
-		if (com.mendix.core.Core.isSubClassOf("TestModule.TestImage", mendixObject.getType())) {
+		if (mendixObject.isInstanceOf("TestModule.TestImage")) {
 			return testmodule.proxies.TestImage.initialize(context, mendixObject);
 		}
-		if (com.mendix.core.Core.isSubClassOf("TestNativeFileDocuments.TestMessageImage", mendixObject.getType())) {
+		if (mendixObject.isInstanceOf("TestNativeFileDocuments.TestMessageImage")) {
 			return testnativefiledocuments.proxies.TestMessageImage.initialize(context, mendixObject);
 		}
 		return new system.proxies.Image(context, mendixObject);

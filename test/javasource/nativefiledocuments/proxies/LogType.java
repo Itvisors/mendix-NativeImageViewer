@@ -6,28 +6,26 @@ package nativefiledocuments.proxies;
 
 public enum LogType
 {
-	Info(new java.lang.String[][] { new java.lang.String[] { "en_US", "Info" } }),
-	Error(new java.lang.String[][] { new java.lang.String[] { "en_US", "Error" } }),
-	Exception(new java.lang.String[][] { new java.lang.String[] { "en_US", "Exception" } }),
-	Parameters(new java.lang.String[][] { new java.lang.String[] { "en_US", "Parameters" } });
+	Info("0190564c-4d96-4b33-952a-238fbde7020c"),
+	Error("0b190341-3efd-400d-be0d-bf0690133faa"),
+	Exception("0cc18d8d-0326-4ff4-9e3d-98552bd1e1f6"),
+	Parameters("83fdb8c4-2675-4149-8ef1-f388e1f27c98");
 
-	private final java.util.Map<java.lang.String, java.lang.String> captions;
-
-	private LogType(java.lang.String[][] captionStrings)
+	private final java.lang.String i18nCaptionKey;
+	
+	private LogType(java.lang.String i18nCaptionKey)
 	{
-		this.captions = new java.util.HashMap<>();
-		for (java.lang.String[] captionString : captionStrings) {
-			captions.put(captionString[0], captionString[1]);
-		}
+		this.i18nCaptionKey = i18nCaptionKey;
 	}
 
 	public java.lang.String getCaption(java.lang.String languageCode)
 	{
-		return captions.getOrDefault(languageCode, "en_US");
+		String caption = com.mendix.core.Core.getInternationalizedString(languageCode, i18nCaptionKey);
+		return caption.isEmpty() ? getCaption() : caption;
 	}
 
 	public java.lang.String getCaption()
 	{
-		return captions.get("en_US");
+		return com.mendix.core.Core.getInternationalizedString("en_US", i18nCaptionKey);
 	}
 }

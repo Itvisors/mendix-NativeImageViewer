@@ -55,7 +55,7 @@ public class FileDocument implements com.mendix.systemwideinterfaces.core.IEntit
 		if (fileDocumentMendixObject == null) {
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
 		}
-		if (!com.mendix.core.Core.isSubClassOf(entityName, fileDocumentMendixObject.getType())) {
+		if (!fileDocumentMendixObject.isInstanceOf(entityName)) {
 			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
 		}	
 
@@ -72,25 +72,25 @@ public class FileDocument implements com.mendix.systemwideinterfaces.core.IEntit
 	 */
 	public static system.proxies.FileDocument initialize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject mendixObject)
 	{
-		if (com.mendix.core.Core.isSubClassOf("NativeFileDocuments.DeviceLogFile", mendixObject.getType())) {
+		if (mendixObject.isInstanceOf("NativeFileDocuments.DeviceLogFile")) {
 			return nativefiledocuments.proxies.DeviceLogFile.initialize(context, mendixObject);
 		}
-		if (com.mendix.core.Core.isSubClassOf("System.Image", mendixObject.getType())) {
+		if (mendixObject.isInstanceOf("System.Image")) {
 			return system.proxies.Image.initialize(context, mendixObject);
 		}
-		if (com.mendix.core.Core.isSubClassOf("System.SynchronizationErrorFile", mendixObject.getType())) {
+		if (mendixObject.isInstanceOf("System.SynchronizationErrorFile")) {
 			return system.proxies.SynchronizationErrorFile.initialize(context, mendixObject);
 		}
-		if (com.mendix.core.Core.isSubClassOf("TestNativeFileDocuments.TestDocument", mendixObject.getType())) {
+		if (mendixObject.isInstanceOf("TestNativeFileDocuments.TestDocument")) {
 			return testnativefiledocuments.proxies.TestDocument.initialize(context, mendixObject);
 		}
-		if (com.mendix.core.Core.isSubClassOf("TestNativeFileDocuments.TestWriteFile", mendixObject.getType())) {
+		if (mendixObject.isInstanceOf("TestNativeFileDocuments.TestWriteFile")) {
 			return testnativefiledocuments.proxies.TestWriteFile.initialize(context, mendixObject);
 		}
-		if (com.mendix.core.Core.isSubClassOf("TestNativeFileDocuments.TestWriteFileResult", mendixObject.getType())) {
+		if (mendixObject.isInstanceOf("TestNativeFileDocuments.TestWriteFileResult")) {
 			return testnativefiledocuments.proxies.TestWriteFileResult.initialize(context, mendixObject);
 		}
-		if (com.mendix.core.Core.isSubClassOf("TestNativeFileDocuments.TestZip", mendixObject.getType())) {
+		if (mendixObject.isInstanceOf("TestNativeFileDocuments.TestZip")) {
 			return testnativefiledocuments.proxies.TestZip.initialize(context, mendixObject);
 		}
 		return new system.proxies.FileDocument(context, mendixObject);

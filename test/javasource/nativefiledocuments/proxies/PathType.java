@@ -6,26 +6,24 @@ package nativefiledocuments.proxies;
 
 public enum PathType
 {
-	FullPath(new java.lang.String[][] { new java.lang.String[] { "en_US", "Full path" } }),
-	DocumentsDirectory(new java.lang.String[][] { new java.lang.String[] { "en_US", "Documents directory" } });
+	FullPath("6193027b-f85c-4178-8e00-4761f2925a37"),
+	DocumentsDirectory("6ddfe535-4f71-47a5-a190-57c2af299ee1");
 
-	private final java.util.Map<java.lang.String, java.lang.String> captions;
-
-	private PathType(java.lang.String[][] captionStrings)
+	private final java.lang.String i18nCaptionKey;
+	
+	private PathType(java.lang.String i18nCaptionKey)
 	{
-		this.captions = new java.util.HashMap<>();
-		for (java.lang.String[] captionString : captionStrings) {
-			captions.put(captionString[0], captionString[1]);
-		}
+		this.i18nCaptionKey = i18nCaptionKey;
 	}
 
 	public java.lang.String getCaption(java.lang.String languageCode)
 	{
-		return captions.getOrDefault(languageCode, "en_US");
+		String caption = com.mendix.core.Core.getInternationalizedString(languageCode, i18nCaptionKey);
+		return caption.isEmpty() ? getCaption() : caption;
 	}
 
 	public java.lang.String getCaption()
 	{
-		return captions.get("en_US");
+		return com.mendix.core.Core.getInternationalizedString("en_US", i18nCaptionKey);
 	}
 }

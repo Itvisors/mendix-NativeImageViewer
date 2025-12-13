@@ -20,16 +20,13 @@ public class DownloadFileProgress implements com.mendix.systemwideinterfaces.cor
 	 */
 	public enum MemberNames
 	{
-		JobId("JobId"),
 		LocalUrl("LocalUrl"),
 		ContentLength("ContentLength"),
 		BytesWritten("BytesWritten"),
 		ProgressPercentage("ProgressPercentage"),
 		StatusCode("StatusCode"),
-		Error("Error"),
-		ErrorMessage("ErrorMessage"),
-		Finished("Finished"),
-		Success("Success");
+		Status("Status"),
+		ErrorMessage("ErrorMessage");
 
 		private final java.lang.String metaName;
 
@@ -55,7 +52,7 @@ public class DownloadFileProgress implements com.mendix.systemwideinterfaces.cor
 		if (downloadFileProgressMendixObject == null) {
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
 		}
-		if (!com.mendix.core.Core.isSubClassOf(entityName, downloadFileProgressMendixObject.getType())) {
+		if (!downloadFileProgressMendixObject.isInstanceOf(entityName)) {
 			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
 		}	
 
@@ -79,42 +76,6 @@ public class DownloadFileProgress implements com.mendix.systemwideinterfaces.cor
 	{
 		com.mendix.systemwideinterfaces.core.IMendixObject mendixObject = com.mendix.core.Core.retrieveId(context, mendixIdentifier);
 		return nativefiledocuments.proxies.DownloadFileProgress.initialize(context, mendixObject);
-	}
-
-	/**
-	 * @return value of JobId
-	 */
-	public final java.lang.Integer getJobId()
-	{
-		return getJobId(getContext());
-	}
-
-	/**
-	 * @param context
-	 * @return value of JobId
-	 */
-	public final java.lang.Integer getJobId(com.mendix.systemwideinterfaces.core.IContext context)
-	{
-		return (java.lang.Integer) getMendixObject().getValue(context, MemberNames.JobId.toString());
-	}
-
-	/**
-	 * Set value of JobId
-	 * @param jobid
-	 */
-	public final void setJobId(java.lang.Integer jobid)
-	{
-		setJobId(getContext(), jobid);
-	}
-
-	/**
-	 * Set value of JobId
-	 * @param context
-	 * @param jobid
-	 */
-	public final void setJobId(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Integer jobid)
-	{
-		getMendixObject().setValue(context, MemberNames.JobId.toString(), jobid);
 	}
 
 	/**
@@ -298,39 +259,48 @@ public class DownloadFileProgress implements com.mendix.systemwideinterfaces.cor
 	}
 
 	/**
-	 * @return value of Error
+	 * Get value of Status
+	 * @param status
 	 */
-	public final java.lang.Boolean getError()
+	public final nativefiledocuments.proxies.DownloadFileStatus getStatus()
 	{
-		return getError(getContext());
+		return getStatus(getContext());
 	}
 
 	/**
 	 * @param context
-	 * @return value of Error
+	 * @return value of Status
 	 */
-	public final java.lang.Boolean getError(com.mendix.systemwideinterfaces.core.IContext context)
+	public final nativefiledocuments.proxies.DownloadFileStatus getStatus(com.mendix.systemwideinterfaces.core.IContext context)
 	{
-		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.Error.toString());
+		Object obj = getMendixObject().getValue(context, MemberNames.Status.toString());
+		if (obj == null) {
+			return null;
+		}
+		return nativefiledocuments.proxies.DownloadFileStatus.valueOf((java.lang.String) obj);
 	}
 
 	/**
-	 * Set value of Error
-	 * @param error
+	 * Set value of Status
+	 * @param status
 	 */
-	public final void setError(java.lang.Boolean error)
+	public final void setStatus(nativefiledocuments.proxies.DownloadFileStatus status)
 	{
-		setError(getContext(), error);
+		setStatus(getContext(), status);
 	}
 
 	/**
-	 * Set value of Error
+	 * Set value of Status
 	 * @param context
-	 * @param error
+	 * @param status
 	 */
-	public final void setError(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean error)
+	public final void setStatus(com.mendix.systemwideinterfaces.core.IContext context, nativefiledocuments.proxies.DownloadFileStatus status)
 	{
-		getMendixObject().setValue(context, MemberNames.Error.toString(), error);
+		if (status != null) {
+			getMendixObject().setValue(context, MemberNames.Status.toString(), status.toString());
+		} else {
+			getMendixObject().setValue(context, MemberNames.Status.toString(), null);
+		}
 	}
 
 	/**
@@ -367,78 +337,6 @@ public class DownloadFileProgress implements com.mendix.systemwideinterfaces.cor
 	public final void setErrorMessage(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String errormessage)
 	{
 		getMendixObject().setValue(context, MemberNames.ErrorMessage.toString(), errormessage);
-	}
-
-	/**
-	 * @return value of Finished
-	 */
-	public final java.lang.Boolean getFinished()
-	{
-		return getFinished(getContext());
-	}
-
-	/**
-	 * @param context
-	 * @return value of Finished
-	 */
-	public final java.lang.Boolean getFinished(com.mendix.systemwideinterfaces.core.IContext context)
-	{
-		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.Finished.toString());
-	}
-
-	/**
-	 * Set value of Finished
-	 * @param finished
-	 */
-	public final void setFinished(java.lang.Boolean finished)
-	{
-		setFinished(getContext(), finished);
-	}
-
-	/**
-	 * Set value of Finished
-	 * @param context
-	 * @param finished
-	 */
-	public final void setFinished(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean finished)
-	{
-		getMendixObject().setValue(context, MemberNames.Finished.toString(), finished);
-	}
-
-	/**
-	 * @return value of Success
-	 */
-	public final java.lang.Boolean getSuccess()
-	{
-		return getSuccess(getContext());
-	}
-
-	/**
-	 * @param context
-	 * @return value of Success
-	 */
-	public final java.lang.Boolean getSuccess(com.mendix.systemwideinterfaces.core.IContext context)
-	{
-		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.Success.toString());
-	}
-
-	/**
-	 * Set value of Success
-	 * @param success
-	 */
-	public final void setSuccess(java.lang.Boolean success)
-	{
-		setSuccess(getContext(), success);
-	}
-
-	/**
-	 * Set value of Success
-	 * @param context
-	 * @param success
-	 */
-	public final void setSuccess(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean success)
-	{
-		getMendixObject().setValue(context, MemberNames.Success.toString(), success);
 	}
 
 	@java.lang.Override

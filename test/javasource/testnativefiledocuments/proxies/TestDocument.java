@@ -45,7 +45,7 @@ public class TestDocument extends system.proxies.FileDocument
 	protected TestDocument(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject testDocumentMendixObject)
 	{
 		super(context, testDocumentMendixObject);
-		if (!com.mendix.core.Core.isSubClassOf(entityName, testDocumentMendixObject.getType())) {
+		if (!testDocumentMendixObject.isInstanceOf(entityName)) {
 			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
 		}	
 	}

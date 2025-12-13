@@ -50,7 +50,7 @@ public class ResizedImage extends system.proxies.Image
 	protected ResizedImage(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject resizedImageMendixObject)
 	{
 		super(context, resizedImageMendixObject);
-		if (!com.mendix.core.Core.isSubClassOf(entityName, resizedImageMendixObject.getType())) {
+		if (!resizedImageMendixObject.isInstanceOf(entityName)) {
 			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
 		}	
 	}

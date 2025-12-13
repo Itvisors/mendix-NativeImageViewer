@@ -48,7 +48,7 @@ public class TestMessageImage extends system.proxies.Image
 	protected TestMessageImage(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject testMessageImageMendixObject)
 	{
 		super(context, testMessageImageMendixObject);
-		if (!com.mendix.core.Core.isSubClassOf(entityName, testMessageImageMendixObject.getType())) {
+		if (!testMessageImageMendixObject.isInstanceOf(entityName)) {
 			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
 		}	
 	}

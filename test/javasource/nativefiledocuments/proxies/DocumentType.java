@@ -6,36 +6,34 @@ package nativefiledocuments.proxies;
 
 public enum DocumentType
 {
-	audio(new java.lang.String[][] { new java.lang.String[] { "en_US", "audio" } }),
-	csv(new java.lang.String[][] { new java.lang.String[] { "en_US", "csv" } }),
-	doc(new java.lang.String[][] { new java.lang.String[] { "en_US", "doc" } }),
-	docx(new java.lang.String[][] { new java.lang.String[] { "en_US", "docx" } }),
-	pdf(new java.lang.String[][] { new java.lang.String[] { "en_US", "pdf" } }),
-	plainText(new java.lang.String[][] { new java.lang.String[] { "en_US", "plainText" } }),
-	ppt(new java.lang.String[][] { new java.lang.String[] { "en_US", "ppt" } }),
-	pptx(new java.lang.String[][] { new java.lang.String[] { "en_US", "pptx" } }),
-	video(new java.lang.String[][] { new java.lang.String[] { "en_US", "video" } }),
-	xls(new java.lang.String[][] { new java.lang.String[] { "en_US", "xls" } }),
-	xlsx(new java.lang.String[][] { new java.lang.String[] { "en_US", "xlsx" } }),
-	zip(new java.lang.String[][] { new java.lang.String[] { "en_US", "zip" } });
+	audio("dc9f5f6a-1084-47c9-926d-629b0fd0e6d7"),
+	csv("7ffb360e-9faa-4b37-8ecf-8361342a15b2"),
+	doc("15619d8d-61cf-45a4-8d5f-b6c5458e1fff"),
+	docx("720e950f-ea5f-47de-9dd4-2f7bc52863aa"),
+	pdf("cd46c714-7ae3-47c2-9e9c-d6b40ae0a7b9"),
+	plainText("614a9333-e471-44c4-a8ad-026b05693ff3"),
+	ppt("384fdccb-2344-41e2-a352-bd4aa095c853"),
+	pptx("d54a999a-ae76-46ba-b56a-aca86d85c1e6"),
+	video("e9c48da0-e6d3-4789-953a-26fcc02be3f4"),
+	xls("e52e0265-107b-41cb-8ab6-7706448000e5"),
+	xlsx("dbeb84d6-8ad7-4dd8-8a8e-2010cd32e8df"),
+	zip("5e495031-e113-4edd-b526-db30772cd8bc");
 
-	private final java.util.Map<java.lang.String, java.lang.String> captions;
-
-	private DocumentType(java.lang.String[][] captionStrings)
+	private final java.lang.String i18nCaptionKey;
+	
+	private DocumentType(java.lang.String i18nCaptionKey)
 	{
-		this.captions = new java.util.HashMap<>();
-		for (java.lang.String[] captionString : captionStrings) {
-			captions.put(captionString[0], captionString[1]);
-		}
+		this.i18nCaptionKey = i18nCaptionKey;
 	}
 
 	public java.lang.String getCaption(java.lang.String languageCode)
 	{
-		return captions.getOrDefault(languageCode, "en_US");
+		String caption = com.mendix.core.Core.getInternationalizedString(languageCode, i18nCaptionKey);
+		return caption.isEmpty() ? getCaption() : caption;
 	}
 
 	public java.lang.String getCaption()
 	{
-		return captions.get("en_US");
+		return com.mendix.core.Core.getInternationalizedString("en_US", i18nCaptionKey);
 	}
 }

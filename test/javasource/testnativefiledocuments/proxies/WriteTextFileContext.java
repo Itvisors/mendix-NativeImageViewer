@@ -24,7 +24,8 @@ public class WriteTextFileContext implements com.mendix.systemwideinterfaces.cor
 		Filename("Filename"),
 		Append("Append"),
 		FolderName("FolderName"),
-		OfflineDebug("OfflineDebug");
+		OfflineDebug("OfflineDebug"),
+		ReadTextFileResult("ReadTextFileResult");
 
 		private final java.lang.String metaName;
 
@@ -50,7 +51,7 @@ public class WriteTextFileContext implements com.mendix.systemwideinterfaces.cor
 		if (writeTextFileContextMendixObject == null) {
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
 		}
-		if (!com.mendix.core.Core.isSubClassOf(entityName, writeTextFileContextMendixObject.getType())) {
+		if (!writeTextFileContextMendixObject.isInstanceOf(entityName)) {
 			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
 		}	
 
@@ -254,6 +255,42 @@ public class WriteTextFileContext implements com.mendix.systemwideinterfaces.cor
 	public final void setOfflineDebug(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean offlinedebug)
 	{
 		getMendixObject().setValue(context, MemberNames.OfflineDebug.toString(), offlinedebug);
+	}
+
+	/**
+	 * @return value of ReadTextFileResult
+	 */
+	public final java.lang.String getReadTextFileResult()
+	{
+		return getReadTextFileResult(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of ReadTextFileResult
+	 */
+	public final java.lang.String getReadTextFileResult(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.ReadTextFileResult.toString());
+	}
+
+	/**
+	 * Set value of ReadTextFileResult
+	 * @param readtextfileresult
+	 */
+	public final void setReadTextFileResult(java.lang.String readtextfileresult)
+	{
+		setReadTextFileResult(getContext(), readtextfileresult);
+	}
+
+	/**
+	 * Set value of ReadTextFileResult
+	 * @param context
+	 * @param readtextfileresult
+	 */
+	public final void setReadTextFileResult(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String readtextfileresult)
+	{
+		getMendixObject().setValue(context, MemberNames.ReadTextFileResult.toString(), readtextfileresult);
 	}
 
 	@java.lang.Override

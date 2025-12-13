@@ -15,6 +15,16 @@ public final class Microflows
 	private Microflows() {}
 
 	// These are the microflows for the TestNativeFileDocuments module
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder aCT_ImageToResize_DeleteResizedImagesBuilder()
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("TestNativeFileDocuments.ACT_ImageToResize_DeleteResizedImages");
+		return builder;
+	}
+
+	public static void aCT_ImageToResize_DeleteResizedImages(IContext context)
+	{
+		aCT_ImageToResize_DeleteResizedImagesBuilder().execute(context);
+	}
 	public static com.mendix.core.actionmanagement.MicroflowCallBuilder aCT_ImageToResize_SaveBuilder(
 		testnativefiledocuments.proxies.ImageToResize _testImageToResize
 	)
@@ -33,6 +43,16 @@ public final class Microflows
 				_testImageToResize
 			)
 			.execute(context);
+	}
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder aCT_TestCropImage_DeleteCroppedImagesBuilder()
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("TestNativeFileDocuments.ACT_TestCropImage_DeleteCroppedImages");
+		return builder;
+	}
+
+	public static void aCT_TestCropImage_DeleteCroppedImages(IContext context)
+	{
+		aCT_TestCropImage_DeleteCroppedImagesBuilder().execute(context);
 	}
 	public static com.mendix.core.actionmanagement.MicroflowCallBuilder aCT_TestCropImage_SaveBuilder(
 		testnativefiledocuments.proxies.TestCropImage _testCropImage
@@ -71,6 +91,16 @@ public final class Microflows
 				_testDocument
 			)
 			.execute(context);
+	}
+	public static com.mendix.core.actionmanagement.MicroflowCallBuilder aCT_TestWriteFile_DeleteWriteFileResultsBuilder()
+	{
+		com.mendix.core.actionmanagement.MicroflowCallBuilder builder = Core.microflowCall("TestNativeFileDocuments.ACT_TestWriteFile_DeleteWriteFileResults");
+		return builder;
+	}
+
+	public static void aCT_TestWriteFile_DeleteWriteFileResults(IContext context)
+	{
+		aCT_TestWriteFile_DeleteWriteFileResultsBuilder().execute(context);
 	}
 	public static com.mendix.core.actionmanagement.MicroflowCallBuilder aCT_TestWriteFile_SaveBuilder(
 		testnativefiledocuments.proxies.TestWriteFile _testWriteFile

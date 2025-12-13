@@ -50,7 +50,7 @@ public class CroppedImage extends system.proxies.Image
 	protected CroppedImage(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject croppedImageMendixObject)
 	{
 		super(context, croppedImageMendixObject);
-		if (!com.mendix.core.Core.isSubClassOf(entityName, croppedImageMendixObject.getType())) {
+		if (!croppedImageMendixObject.isInstanceOf(entityName)) {
 			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
 		}	
 	}

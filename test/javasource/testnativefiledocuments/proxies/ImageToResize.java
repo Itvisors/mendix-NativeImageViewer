@@ -56,7 +56,7 @@ public class ImageToResize extends system.proxies.Image
 	protected ImageToResize(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject imageToResizeMendixObject)
 	{
 		super(context, imageToResizeMendixObject);
-		if (!com.mendix.core.Core.isSubClassOf(entityName, imageToResizeMendixObject.getType())) {
+		if (!imageToResizeMendixObject.isInstanceOf(entityName)) {
 			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
 		}	
 	}

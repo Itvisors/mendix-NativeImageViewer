@@ -22,7 +22,8 @@ public class TestContext implements com.mendix.systemwideinterfaces.core.IEntity
 	{
 		DirectoryExists("DirectoryExists"),
 		OfflineDebug("OfflineDebug"),
-		FullPath("FullPath");
+		FullPath("FullPath"),
+		FullPathNoPrefix("FullPathNoPrefix");
 
 		private final java.lang.String metaName;
 
@@ -48,7 +49,7 @@ public class TestContext implements com.mendix.systemwideinterfaces.core.IEntity
 		if (testContextMendixObject == null) {
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
 		}
-		if (!com.mendix.core.Core.isSubClassOf(entityName, testContextMendixObject.getType())) {
+		if (!testContextMendixObject.isInstanceOf(entityName)) {
 			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
 		}	
 
@@ -180,6 +181,42 @@ public class TestContext implements com.mendix.systemwideinterfaces.core.IEntity
 	public final void setFullPath(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String fullpath)
 	{
 		getMendixObject().setValue(context, MemberNames.FullPath.toString(), fullpath);
+	}
+
+	/**
+	 * @return value of FullPathNoPrefix
+	 */
+	public final java.lang.String getFullPathNoPrefix()
+	{
+		return getFullPathNoPrefix(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of FullPathNoPrefix
+	 */
+	public final java.lang.String getFullPathNoPrefix(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.String) getMendixObject().getValue(context, MemberNames.FullPathNoPrefix.toString());
+	}
+
+	/**
+	 * Set value of FullPathNoPrefix
+	 * @param fullpathnoprefix
+	 */
+	public final void setFullPathNoPrefix(java.lang.String fullpathnoprefix)
+	{
+		setFullPathNoPrefix(getContext(), fullpathnoprefix);
+	}
+
+	/**
+	 * Set value of FullPathNoPrefix
+	 * @param context
+	 * @param fullpathnoprefix
+	 */
+	public final void setFullPathNoPrefix(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String fullpathnoprefix)
+	{
+		getMendixObject().setValue(context, MemberNames.FullPathNoPrefix.toString(), fullpathnoprefix);
 	}
 
 	@java.lang.Override

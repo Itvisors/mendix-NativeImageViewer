@@ -6,27 +6,25 @@ package nativemobileresources.proxies;
 
 public enum StatusBarHideShowAnimation
 {
-	none(new java.lang.String[][] { new java.lang.String[] { "en_US", "None" } }),
-	fade(new java.lang.String[][] { new java.lang.String[] { "en_US", "Fade" } }),
-	slide(new java.lang.String[][] { new java.lang.String[] { "en_US", "Slide" } });
+	none("3890ee80-9fba-4bf9-9ff6-c1efb7c3b77f"),
+	fade("c0bbae74-f8d7-491d-b0af-1c59243df771"),
+	slide("7c0c8657-0863-4c3f-8ae1-2f37ea00f0d9");
 
-	private final java.util.Map<java.lang.String, java.lang.String> captions;
-
-	private StatusBarHideShowAnimation(java.lang.String[][] captionStrings)
+	private final java.lang.String i18nCaptionKey;
+	
+	private StatusBarHideShowAnimation(java.lang.String i18nCaptionKey)
 	{
-		this.captions = new java.util.HashMap<>();
-		for (java.lang.String[] captionString : captionStrings) {
-			captions.put(captionString[0], captionString[1]);
-		}
+		this.i18nCaptionKey = i18nCaptionKey;
 	}
 
 	public java.lang.String getCaption(java.lang.String languageCode)
 	{
-		return captions.getOrDefault(languageCode, "en_US");
+		String caption = com.mendix.core.Core.getInternationalizedString(languageCode, i18nCaptionKey);
+		return caption.isEmpty() ? getCaption() : caption;
 	}
 
 	public java.lang.String getCaption()
 	{
-		return captions.get("en_US");
+		return com.mendix.core.Core.getInternationalizedString("en_US", i18nCaptionKey);
 	}
 }

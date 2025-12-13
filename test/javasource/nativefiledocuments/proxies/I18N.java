@@ -6,27 +6,25 @@ package nativefiledocuments.proxies;
 
 public enum I18N
 {
-	ImageCropCancel(new java.lang.String[][] { new java.lang.String[] { "en_US", "Cancel" }, new java.lang.String[] { "nl_NL", "Annuleren" } }),
-	ImageCropConfirm(new java.lang.String[][] { new java.lang.String[] { "en_US", "Save" }, new java.lang.String[] { "nl_NL", "Opslaan" } }),
-	ImageCropDialogTitle(new java.lang.String[][] { new java.lang.String[] { "en_US", "Edit image" }, new java.lang.String[] { "nl_NL", "Foto bewerken" } });
+	ImageCropCancel("7fce25d8-3d66-4b21-9f67-a6f852f51e12"),
+	ImageCropConfirm("cc5c89e9-0519-4366-b37c-7efe4f3e6dcf"),
+	ImageCropDialogTitle("ea13275d-621e-441b-aed0-3d2449f8490d");
 
-	private final java.util.Map<java.lang.String, java.lang.String> captions;
-
-	private I18N(java.lang.String[][] captionStrings)
+	private final java.lang.String i18nCaptionKey;
+	
+	private I18N(java.lang.String i18nCaptionKey)
 	{
-		this.captions = new java.util.HashMap<>();
-		for (java.lang.String[] captionString : captionStrings) {
-			captions.put(captionString[0], captionString[1]);
-		}
+		this.i18nCaptionKey = i18nCaptionKey;
 	}
 
 	public java.lang.String getCaption(java.lang.String languageCode)
 	{
-		return captions.getOrDefault(languageCode, "en_US");
+		String caption = com.mendix.core.Core.getInternationalizedString(languageCode, i18nCaptionKey);
+		return caption.isEmpty() ? getCaption() : caption;
 	}
 
 	public java.lang.String getCaption()
 	{
-		return captions.get("en_US");
+		return com.mendix.core.Core.getInternationalizedString("en_US", i18nCaptionKey);
 	}
 }

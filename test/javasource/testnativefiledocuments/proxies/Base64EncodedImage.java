@@ -47,7 +47,7 @@ public class Base64EncodedImage implements com.mendix.systemwideinterfaces.core.
 		if (base64EncodedImageMendixObject == null) {
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
 		}
-		if (!com.mendix.core.Core.isSubClassOf(entityName, base64EncodedImageMendixObject.getType())) {
+		if (!base64EncodedImageMendixObject.isInstanceOf(entityName)) {
 			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
 		}	
 

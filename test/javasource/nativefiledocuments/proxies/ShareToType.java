@@ -6,32 +6,30 @@ package nativefiledocuments.proxies;
 
 public enum ShareToType
 {
-	email(new java.lang.String[][] { new java.lang.String[] { "en_US", "Email" }, new java.lang.String[] { "nl_NL", "Email" } }),
-	facebook(new java.lang.String[][] { new java.lang.String[] { "en_US", "Facebook" }, new java.lang.String[] { "nl_NL", "Facebook" } }),
-	instagram(new java.lang.String[][] { new java.lang.String[] { "en_US", "Instagram" }, new java.lang.String[] { "nl_NL", "Instagram" } }),
-	linkedin(new java.lang.String[][] { new java.lang.String[] { "en_US", "Linkedin" }, new java.lang.String[] { "nl_NL", "Linkedin" } }),
-	pinterest(new java.lang.String[][] { new java.lang.String[] { "en_US", "Pinterest" }, new java.lang.String[] { "nl_NL", "Pinterest" } }),
-	SMS(new java.lang.String[][] { new java.lang.String[] { "en_US", "SMS" }, new java.lang.String[] { "nl_NL", "SMS" } }),
-	twitter(new java.lang.String[][] { new java.lang.String[] { "en_US", "Twitter" }, new java.lang.String[] { "nl_NL", "Twitter" } }),
-	whatsapp(new java.lang.String[][] { new java.lang.String[] { "en_US", "Whatsapp" }, new java.lang.String[] { "nl_NL", "Whatsapp" } });
+	email("18603ceb-fc3a-4a90-ad1a-4cdd53b2f84b"),
+	facebook("6f3708ea-7f40-4ba4-be8b-4000ab393254"),
+	instagram("74752143-87bc-40dd-9725-0492b4ddf9e7"),
+	linkedin("ec369c65-1980-4460-94c8-75abd1909b05"),
+	pinterest("2ff41c19-d7bc-473b-adb1-1a87ace9fc09"),
+	SMS("72074822-e443-4323-8113-471e4da5a7f9"),
+	twitter("6b54495e-ac71-4353-a2ef-348581183a0e"),
+	whatsapp("f8ac1deb-3f48-440c-9497-93f3aa912f56");
 
-	private final java.util.Map<java.lang.String, java.lang.String> captions;
-
-	private ShareToType(java.lang.String[][] captionStrings)
+	private final java.lang.String i18nCaptionKey;
+	
+	private ShareToType(java.lang.String i18nCaptionKey)
 	{
-		this.captions = new java.util.HashMap<>();
-		for (java.lang.String[] captionString : captionStrings) {
-			captions.put(captionString[0], captionString[1]);
-		}
+		this.i18nCaptionKey = i18nCaptionKey;
 	}
 
 	public java.lang.String getCaption(java.lang.String languageCode)
 	{
-		return captions.getOrDefault(languageCode, "en_US");
+		String caption = com.mendix.core.Core.getInternationalizedString(languageCode, i18nCaptionKey);
+		return caption.isEmpty() ? getCaption() : caption;
 	}
 
 	public java.lang.String getCaption()
 	{
-		return captions.get("en_US");
+		return com.mendix.core.Core.getInternationalizedString("en_US", i18nCaptionKey);
 	}
 }

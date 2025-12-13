@@ -11,7 +11,7 @@ import { Big } from "big.js";
 // BEGIN EXTRA CODE
 
 import NativeFileDocumentsUtils from "../nativefiledocumentsutils";
-import RNFS from "react-native-fs";
+import RNBlobUtil from "react-native-blob-util";
 import { Platform } from 'react-native';
 
 // END EXTRA CODE
@@ -30,16 +30,16 @@ export async function writeTextFile(filepath, pathType, textData, append, writeT
 	// BEGIN USER CODE
 
 	if (!filepath) {
-		Promise.reject(new Error("No file path specified"));
+		return Promise.reject(new Error("No file path specified"));
 	}
 	if (!pathType) {
-		Promise.reject(new Error("No path type specified"));
+		return Promise.reject(new Error("No path type specified"));
 	}
 	if (!textData) {
-		Promise.reject(new Error("No data specified"));
+		return Promise.reject(new Error("No data specified"));
 	}
 	if (writeToLog) {
-		NativeFileDocumentsUtils.writeToLog({
+		await NativeFileDocumentsUtils.writeToLog({
 			actionName: "writeTextFile",
 			logType: "Parameters",
 			logMessage: JSON.stringify({
@@ -51,21 +51,29 @@ export async function writeTextFile(filepath, pathType, textData, append, writeT
 		});
 	}
 
-	const fullPath = NativeFileDocumentsUtils.getFullPath(filepath, pathType, RNFS, Platform.OS);
+	const fullPath = NativeFileDocumentsUtils.getFullPathNoPrefix(filepath, pathType, RNBlobUtil, Platform.OS);
+
+	const fileExists = await RNBlobUtil.fs.exists(fullPath);
 
 	if (writeToLog) {
-		NativeFileDocumentsUtils.writeToLog({
+		const logPrefix = fileExists ? "Existing" : "New";
+		await NativeFileDocumentsUtils.writeToLog({
 			actionName: "writeTextFile",
 			logType: "Info",
-			logMessage: "Full path: " + fullPath
+			logMessage: logPrefix + " full path: " + fullPath
 		});
 	}
 
-	if (append) {
-		return RNFS.appendFile(fullPath, textData, "utf8");
+	if (fileExists) {
+		if (append) {
+			return RNBlobUtil.fs.appendFile(fullPath, textData, "utf8");
+		} else {
+			return RNBlobUtil.fs.writeFile(fullPath, textData, "utf8");
+		}
 	} else {
-		return RNFS.writeFile(fullPath, textData, "utf8");
+		return RNBlobUtil.fs.createFile(fullPath, textData, "utf8");
 	}
+
 
 	// END USER CODE
 }

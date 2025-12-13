@@ -6,30 +6,28 @@ package communitycommons.proxies;
 
 public enum LogLevel
 {
-	Trace(new java.lang.String[][] { new java.lang.String[] { "en_US", "Trace" }, new java.lang.String[] { "nl_NL", "Trace" } }),
-	Debug(new java.lang.String[][] { new java.lang.String[] { "en_US", "Debug" }, new java.lang.String[] { "nl_NL", "Debug" } }),
-	Info(new java.lang.String[][] { new java.lang.String[] { "en_US", "Info" }, new java.lang.String[] { "nl_NL", "Info" } }),
-	Warning(new java.lang.String[][] { new java.lang.String[] { "en_US", "Warning" }, new java.lang.String[] { "nl_NL", "Warning" } }),
-	Error(new java.lang.String[][] { new java.lang.String[] { "en_US", "Error" }, new java.lang.String[] { "nl_NL", "Error" } }),
-	Critical(new java.lang.String[][] { new java.lang.String[] { "en_US", "Critical" }, new java.lang.String[] { "nl_NL", "Critical" } });
+	Trace("c7f83e31-44fd-4b7d-97d5-4493ff2b9222"),
+	Debug("ac55ba0a-e803-46e7-a4d1-fd9eebe70ace"),
+	Info("5d22e2f5-1c98-4a71-902d-769ef43c14e9"),
+	Warning("d976951e-2afa-4c92-8621-68d9e829ea9e"),
+	Error("0241552e-da73-4f96-956c-485bfe5705bd"),
+	Critical("7e06588f-4fbb-4ec2-8fbb-babcddfe78b6");
 
-	private final java.util.Map<java.lang.String, java.lang.String> captions;
-
-	private LogLevel(java.lang.String[][] captionStrings)
+	private final java.lang.String i18nCaptionKey;
+	
+	private LogLevel(java.lang.String i18nCaptionKey)
 	{
-		this.captions = new java.util.HashMap<>();
-		for (java.lang.String[] captionString : captionStrings) {
-			captions.put(captionString[0], captionString[1]);
-		}
+		this.i18nCaptionKey = i18nCaptionKey;
 	}
 
 	public java.lang.String getCaption(java.lang.String languageCode)
 	{
-		return captions.getOrDefault(languageCode, "en_US");
+		String caption = com.mendix.core.Core.getInternationalizedString(languageCode, i18nCaptionKey);
+		return caption.isEmpty() ? getCaption() : caption;
 	}
 
 	public java.lang.String getCaption()
 	{
-		return captions.get("en_US");
+		return com.mendix.core.Core.getInternationalizedString("en_US", i18nCaptionKey);
 	}
 }

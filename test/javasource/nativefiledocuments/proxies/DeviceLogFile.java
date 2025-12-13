@@ -47,7 +47,7 @@ public class DeviceLogFile extends system.proxies.FileDocument
 	protected DeviceLogFile(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject deviceLogFileMendixObject)
 	{
 		super(context, deviceLogFileMendixObject);
-		if (!com.mendix.core.Core.isSubClassOf(entityName, deviceLogFileMendixObject.getType())) {
+		if (!deviceLogFileMendixObject.isInstanceOf(entityName)) {
 			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
 		}	
 	}

@@ -6,30 +6,28 @@ package communitycommons.proxies;
 
 public enum SanitizerPolicy
 {
-	BLOCKS(new java.lang.String[][] { new java.lang.String[] { "en_US", "Allows common block elements including <p>, <h1>, etc." } }),
-	FORMATTING(new java.lang.String[][] { new java.lang.String[] { "en_US", "Allows common formatting elements including <b>, <i> etc." } }),
-	IMAGES(new java.lang.String[][] { new java.lang.String[] { "en_US", "Allows <img> elements from HTTP, HTTPS and relative sources" } }),
-	LINKS(new java.lang.String[][] { new java.lang.String[] { "en_US", "Allows HTTP, HTTPS, MAILTO and relative links" } }),
-	STYLES(new java.lang.String[][] { new java.lang.String[] { "en_US", "Allows certain safe CSS properties in style=\"...\" attributes" } }),
-	TABLES(new java.lang.String[][] { new java.lang.String[] { "en_US", "Allows common table elements" } });
+	BLOCKS("1c9f625f-cb4c-4680-97aa-fd7229670664"),
+	FORMATTING("393fd5f5-8c00-46c8-8cc3-5e11300af470"),
+	IMAGES("a2f1a40c-e1aa-42d8-9bda-082e86e41b3d"),
+	LINKS("664c6a73-8733-4ad4-b0aa-dad4bebfe32d"),
+	STYLES("f1f151f6-5f0a-45fd-aa8b-88aa8731bdaa"),
+	TABLES("37777a05-2325-4c25-b3e2-82403d1a9e66");
 
-	private final java.util.Map<java.lang.String, java.lang.String> captions;
-
-	private SanitizerPolicy(java.lang.String[][] captionStrings)
+	private final java.lang.String i18nCaptionKey;
+	
+	private SanitizerPolicy(java.lang.String i18nCaptionKey)
 	{
-		this.captions = new java.util.HashMap<>();
-		for (java.lang.String[] captionString : captionStrings) {
-			captions.put(captionString[0], captionString[1]);
-		}
+		this.i18nCaptionKey = i18nCaptionKey;
 	}
 
 	public java.lang.String getCaption(java.lang.String languageCode)
 	{
-		return captions.getOrDefault(languageCode, "en_US");
+		String caption = com.mendix.core.Core.getInternationalizedString(languageCode, i18nCaptionKey);
+		return caption.isEmpty() ? getCaption() : caption;
 	}
 
 	public java.lang.String getCaption()
 	{
-		return captions.get("en_US");
+		return com.mendix.core.Core.getInternationalizedString("en_US", i18nCaptionKey);
 	}
 }

@@ -49,7 +49,7 @@ public class TestLogListener implements com.mendix.systemwideinterfaces.core.IEn
 		if (testLogListenerMendixObject == null) {
 			throw new java.lang.IllegalArgumentException("The given object cannot be null.");
 		}
-		if (!com.mendix.core.Core.isSubClassOf(entityName, testLogListenerMendixObject.getType())) {
+		if (!testLogListenerMendixObject.isInstanceOf(entityName)) {
 			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
 		}	
 

@@ -11,7 +11,7 @@ import { Big } from "big.js";
 // BEGIN EXTRA CODE
 
 import NativeFileDocumentsUtils from "../nativefiledocumentsutils";
-import RNFS from "react-native-fs";
+import RNBlobUtil from "react-native-blob-util";
 import { Platform } from 'react-native';
 
 // END EXTRA CODE
@@ -28,16 +28,16 @@ export async function writeFile(filepath, pathType, base64Data, writeToLog) {
 	// BEGIN USER CODE
 
 	if (!filepath) {
-		Promise.reject(new Error("No file path specified"));
+		return Promise.reject(new Error("No file path specified"));
 	}
 	if (!pathType) {
-		Promise.reject(new Error("No path type specified"));
+		return Promise.reject(new Error("No path type specified"));
 	}
 	if (!base64Data) {
-		Promise.reject(new Error("No data specified"));
+		return Promise.reject(new Error("No data specified"));
 	}
 	if (writeToLog) {
-		NativeFileDocumentsUtils.writeToLog({
+		await NativeFileDocumentsUtils.writeToLog({
 			actionName: "writeFile",
 			logType: "Parameters",
 			logMessage: JSON.stringify({
@@ -48,17 +48,24 @@ export async function writeFile(filepath, pathType, base64Data, writeToLog) {
 		});
 	}
 
-	const fullPath = NativeFileDocumentsUtils.getFullPath(filepath, pathType, RNFS, Platform.OS);
+	const fullPath = NativeFileDocumentsUtils.getFullPathNoPrefix(filepath, pathType, RNBlobUtil, Platform.OS);
+
+	const fileExists = await RNBlobUtil.fs.exists(fullPath);
 
 	if (writeToLog) {
-		NativeFileDocumentsUtils.writeToLog({
+		const logPrefix = fileExists ? "Existing" : "New";
+		await NativeFileDocumentsUtils.writeToLog({
 			actionName: "writeFile",
 			logType: "Info",
-			logMessage: "Full path: " + fullPath
+			logMessage: logPrefix + " full path: " + fullPath
 		});
 	}
 
-	return RNFS.writeFile(fullPath, base64Data, "base64");
+	if (fileExists) {
+		return RNBlobUtil.fs.writeFile(fullPath, base64Data, "base64");
+	} else {
+		return RNBlobUtil.fs.createFile(fullPath, base64Data, "base64");
+	}
 
 	// END USER CODE
 }

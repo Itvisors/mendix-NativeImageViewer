@@ -46,7 +46,7 @@ public class TestZip extends system.proxies.FileDocument
 	protected TestZip(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject testZipMendixObject)
 	{
 		super(context, testZipMendixObject);
-		if (!com.mendix.core.Core.isSubClassOf(entityName, testZipMendixObject.getType())) {
+		if (!testZipMendixObject.isInstanceOf(entityName)) {
 			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
 		}	
 	}

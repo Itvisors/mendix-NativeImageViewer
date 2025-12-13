@@ -52,7 +52,7 @@ public class TestCropImage extends system.proxies.Image
 	protected TestCropImage(com.mendix.systemwideinterfaces.core.IContext context, com.mendix.systemwideinterfaces.core.IMendixObject testCropImageMendixObject)
 	{
 		super(context, testCropImageMendixObject);
-		if (!com.mendix.core.Core.isSubClassOf(entityName, testCropImageMendixObject.getType())) {
+		if (!testCropImageMendixObject.isInstanceOf(entityName)) {
 			throw new java.lang.IllegalArgumentException(String.format("The given object is not a %s", entityName));
 		}	
 	}

@@ -6,26 +6,24 @@ package nativefiledocuments.proxies;
 
 public enum Platform
 {
-	android(new java.lang.String[][] { new java.lang.String[] { "en_US", "Android" } }),
-	ios(new java.lang.String[][] { new java.lang.String[] { "en_US", "iOS" } });
+	android("a287cf30-3952-45d6-b666-9e2ba030a71f"),
+	ios("3b49221b-d6f6-4e31-b405-0877e366b283");
 
-	private final java.util.Map<java.lang.String, java.lang.String> captions;
-
-	private Platform(java.lang.String[][] captionStrings)
+	private final java.lang.String i18nCaptionKey;
+	
+	private Platform(java.lang.String i18nCaptionKey)
 	{
-		this.captions = new java.util.HashMap<>();
-		for (java.lang.String[] captionString : captionStrings) {
-			captions.put(captionString[0], captionString[1]);
-		}
+		this.i18nCaptionKey = i18nCaptionKey;
 	}
 
 	public java.lang.String getCaption(java.lang.String languageCode)
 	{
-		return captions.getOrDefault(languageCode, "en_US");
+		String caption = com.mendix.core.Core.getInternationalizedString(languageCode, i18nCaptionKey);
+		return caption.isEmpty() ? getCaption() : caption;
 	}
 
 	public java.lang.String getCaption()
 	{
-		return captions.get("en_US");
+		return com.mendix.core.Core.getInternationalizedString("en_US", i18nCaptionKey);
 	}
 }
