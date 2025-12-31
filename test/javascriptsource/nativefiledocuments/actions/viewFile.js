@@ -12,7 +12,7 @@ import { Big } from "big.js";
 
 import NativeFileDocumentsUtils from "../nativefiledocumentsutils";
 import RNBlobUtil from "react-native-blob-util";
-import FileViewer from "react-native-file-viewer";
+import { open } from "react-native-file-viewer-turbo";
 import { Platform } from 'react-native';
 
 // END EXTRA CODE
@@ -20,7 +20,7 @@ import { Platform } from 'react-native';
 /**
  * View document. Returns immediately after opening the file.
  * @param {string} filepath - The path to the file
- * @param {"NativeFileDocuments.PathType.FullPath"|"NativeFileDocuments.PathType.DocumentsDirectory"} pathType
+ * @param {undefined|"FullPath"|"DocumentsDirectory"} pathType
  * @param {boolean} writeToLog
  * @returns {Promise.<boolean>}
  */
@@ -54,7 +54,7 @@ export async function viewFile(filepath, pathType, writeToLog) {
 	}
 
 	try {
-		await FileViewer.open(fullPath);
+		await open(fullPath);
 		return true;
 	} catch (error) {
 		await NativeFileDocumentsUtils.writeToLog({

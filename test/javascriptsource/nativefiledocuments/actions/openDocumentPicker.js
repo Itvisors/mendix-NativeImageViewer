@@ -10,7 +10,7 @@ import { Big } from "big.js";
 
 // BEGIN EXTRA CODE
 
-import DocumentPicker from "react-native-document-picker";
+import { errorCodes,pick, keepLocalCopy, types } from "@react-native-documents/picker";
 import NativeFileDocumentsUtils from "../nativefiledocumentsutils";
 import { create } from "mx-api/data";
 
@@ -19,9 +19,10 @@ import { create } from "mx-api/data";
 /**
  * @param {string} allowedTypes - Empty to allow any file. One or more key values of enumeration DocumentType. Separate multiple values with a comma
  * @param {boolean} writeToLog
+ * @param {string} [notAllowedTypeMessage]
  * @returns {Promise.<MxObject>}
  */
-export async function openDocumentPicker(allowedTypes, writeToLog) {
+export async function openDocumentPicker(allowedTypes, writeToLog, notAllowedTypeMessage) {
 	// BEGIN USER CODE
 	const resultMxObj = await create({ entity: "NativeFileDocuments.DocumentPickerResult" });
 
@@ -29,14 +30,14 @@ export async function openDocumentPicker(allowedTypes, writeToLog) {
 		// The contents of the file can only be directly accessed when copying it.
 		// Otherwise, Android will return another type of URI that needs to be resolved first 
 		const options = {
-			type: [DocumentPicker.types.allFiles],
-			copyTo: "cachesDirectory"
+			mode: "open",
+			allowMultiSelection: false
 		};
 
 		if (allowedTypes) {
 			const allowedTypeArray = [];
 			for (const allowedType of allowedTypes.split(",")) {
-				const documentPickerType = DocumentPicker.types[allowedType];
+				const documentPickerType = types[allowedType];
 				if (documentPickerType) {
 					allowedTypeArray.push(documentPickerType);
 				} else {
@@ -56,23 +57,45 @@ export async function openDocumentPicker(allowedTypes, writeToLog) {
 			});
 		}
 
-		const pickerResult = await DocumentPicker.pickSingle(options);
+		const [pickResult] = await pick(options);
 		if (writeToLog) {
 			await NativeFileDocumentsUtils.writeToLog({
 				actionName: "openDocumentPicker",
 				logType: "Info",
-				logMessage: "Result: " + JSON.stringify(pickerResult)
+				logMessage: "Picker result: " + JSON.stringify(pickResult)
 			});
 		}
 
-		resultMxObj.set("DocumentPicked", true);
-		resultMxObj.set("Name", pickerResult.name);
-		resultMxObj.set("Uri", pickerResult.fileCopyUri ? pickerResult.fileCopyUri : pickerResult.uri);
-		resultMxObj.set("FileType", pickerResult.type);
+        const [copyResult] = await keepLocalCopy({
+          files: [
+            {
+              uri: pickResult.uri,
+              fileName: pickResult.name ?? 'unknown-file-name',
+            },
+          ],
+          destination: 'cachesDirectory',
+        })
+
+		if (writeToLog) {
+			await NativeFileDocumentsUtils.writeToLog({
+				actionName: "openDocumentPicker",
+				logType: "Info",
+				logMessage: "Keep local copy result: " + JSON.stringify(copyResult)
+			});
+		}
+
+        if (copyResult.status === 'success') {
+			resultMxObj.set("DocumentPicked", true);
+			resultMxObj.set("Name", pickResult.name);
+			resultMxObj.set("Uri", copyResult.localUri);
+			resultMxObj.set("FileType", pickResult.type);
+			resultMxObj.set("HasRequestedType", pickResult.hasRequestedType);
+        }
+
 		return resultMxObj;
 
 	} catch(err) {
-		if (DocumentPicker.isCancel(err)) {
+		if (err.code === errorCodes.OPERATION_CANCELED) {
 			if (writeToLog) {
 				await NativeFileDocumentsUtils.writeToLog({
 					actionName: "openDocumentPicker",

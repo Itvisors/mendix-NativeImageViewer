@@ -6,9 +6,9 @@ package nativefiledocuments.proxies;
 
 public enum ResizeImageMode
 {
-	contain("59401f18-01d6-44e8-bc74-7dd2c01d4c79"),
-	cover("68ee37f1-046c-4736-a834-71122d40b4e0"),
-	stretch("7428ec84-7cdd-402d-9891-59bef84c40c1");
+	contain("308b9f09-19df-463e-b518-2a24a507e448"),
+	cover("0ad0e658-7c66-4683-8d7d-d1631e8e8773"),
+	stretch("8d190afd-7ff5-42c1-9575-1bbc6c88c5c8");
 
 	private final java.lang.String i18nCaptionKey;
 	

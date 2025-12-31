@@ -6,14 +6,14 @@ package nativefiledocuments.proxies;
 
 public enum ShareToType
 {
-	email("18603ceb-fc3a-4a90-ad1a-4cdd53b2f84b"),
-	facebook("6f3708ea-7f40-4ba4-be8b-4000ab393254"),
-	instagram("74752143-87bc-40dd-9725-0492b4ddf9e7"),
-	linkedin("ec369c65-1980-4460-94c8-75abd1909b05"),
-	pinterest("2ff41c19-d7bc-473b-adb1-1a87ace9fc09"),
-	SMS("72074822-e443-4323-8113-471e4da5a7f9"),
-	twitter("6b54495e-ac71-4353-a2ef-348581183a0e"),
-	whatsapp("f8ac1deb-3f48-440c-9497-93f3aa912f56");
+	email("ba052dad-a5e5-4996-ae47-9873afbade94"),
+	facebook("54f30036-c9a7-4348-bd7e-2b7adc945116"),
+	instagram("c36c0393-b636-4966-b52c-8509d3fe7ea4"),
+	linkedin("5ffa02df-1825-4e42-8235-16732af8320a"),
+	pinterest("3e879603-f708-413a-aac1-b59ab040edee"),
+	SMS("0bc15338-aad9-41c7-b770-23bb699f115c"),
+	twitter("189d143c-dfc9-4113-af12-d35f74834b53"),
+	whatsapp("2e16ed7e-0b37-42cd-ba5d-dafd25abc3e1");
 
 	private final java.lang.String i18nCaptionKey;
 	

@@ -1,6 +1,6 @@
 {
     "nativeDependencies": {
-        "react-native-blob-util": "0.21.2",
-        "react-native-image-resizer": "1.4.5"
+        "react-native-blob-util": "0.21.3",
+        "@bam.tech/react-native-image-resizer": "3.0.11"
     }
 }

@@ -6,8 +6,8 @@ package nativefiledocuments.proxies;
 
 public enum UrlType
 {
-	MendixBackend("cdb82b47-2fb8-40c9-bac6-3e7c39ed46c0"),
-	Other("58889d60-b038-45d7-887c-ceac6dcf0885");
+	MendixBackend("2eb2333e-32a9-46ca-be40-9c2f9c70680f"),
+	Other("0596d53b-b262-4677-9269-ca36d56ecf54");
 
 	private final java.lang.String i18nCaptionKey;
 	

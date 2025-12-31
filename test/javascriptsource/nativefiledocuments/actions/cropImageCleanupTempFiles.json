@@ -1,5 +1,5 @@
 {
     "nativeDependencies": {
-        "react-native-image-crop-picker": "0.41.6"
+        "react-native-image-crop-picker": "0.51.1"
     }
 }

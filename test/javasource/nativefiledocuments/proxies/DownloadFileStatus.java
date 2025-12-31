@@ -6,10 +6,10 @@ package nativefiledocuments.proxies;
 
 public enum DownloadFileStatus
 {
-	Active("81e9d5f1-afbb-4adb-a502-f401aedab8c2"),
-	Complete("2951692d-3310-4e83-a64a-38742b2d87dc"),
-	Error("cee3188c-38b5-41ef-a373-c90d2c6a99f6"),
-	Cancelled("4e9b84dc-0a62-4599-bd34-abb572ac9c32");
+	Active("3ac8a47f-3827-4057-8934-b3b363a8b150"),
+	Complete("ae583119-d758-4377-9215-974b9772d094"),
+	Error("cf74bfeb-f041-4469-8c6f-5039cbbc2fde"),
+	Cancelled("0b544f88-db06-44a2-a339-0a1492b89d24");
 
 	private final java.lang.String i18nCaptionKey;
 	

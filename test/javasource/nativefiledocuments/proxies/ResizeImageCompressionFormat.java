@@ -6,9 +6,9 @@ package nativefiledocuments.proxies;
 
 public enum ResizeImageCompressionFormat
 {
-	JPEG("110f87ec-938a-4fad-8047-97474b0cd4c8"),
-	PNG("2c544a6d-8d92-4253-9e54-b5ca91e5b44d"),
-	WEBP("0e703204-8ea8-46ea-b463-d5c2418f8ee8");
+	JPEG("77fe5b45-35a4-45e5-89fa-e9122d4ac204"),
+	PNG("2a44aa7e-833d-4337-be75-5bab5ea3e562"),
+	WEBP("25b13faf-8018-4f72-80c5-44861560d253");
 
 	private final java.lang.String i18nCaptionKey;
 	

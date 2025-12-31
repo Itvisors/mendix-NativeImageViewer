@@ -6,9 +6,9 @@ package nativefiledocuments.proxies;
 
 public enum I18N
 {
-	ImageCropCancel("7fce25d8-3d66-4b21-9f67-a6f852f51e12"),
-	ImageCropConfirm("cc5c89e9-0519-4366-b37c-7efe4f3e6dcf"),
-	ImageCropDialogTitle("ea13275d-621e-441b-aed0-3d2449f8490d");
+	ImageCropCancel("c0a7e476-2df4-4426-9c89-e56b405c86b2"),
+	ImageCropConfirm("1d5f839c-ec54-4e8e-8cd2-9301e73bd117"),
+	ImageCropDialogTitle("25fe42b0-6905-4490-a596-097bb3d33415");
 
 	private final java.lang.String i18nCaptionKey;
 	

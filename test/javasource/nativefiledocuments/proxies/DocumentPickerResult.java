@@ -23,7 +23,8 @@ public class DocumentPickerResult implements com.mendix.systemwideinterfaces.cor
 		DocumentPicked("DocumentPicked"),
 		Name("Name"),
 		Uri("Uri"),
-		FileType("FileType");
+		FileType("FileType"),
+		HasRequestedType("HasRequestedType");
 
 		private final java.lang.String metaName;
 
@@ -217,6 +218,42 @@ public class DocumentPickerResult implements com.mendix.systemwideinterfaces.cor
 	public final void setFileType(com.mendix.systemwideinterfaces.core.IContext context, java.lang.String filetype)
 	{
 		getMendixObject().setValue(context, MemberNames.FileType.toString(), filetype);
+	}
+
+	/**
+	 * @return value of HasRequestedType
+	 */
+	public final java.lang.Boolean getHasRequestedType()
+	{
+		return getHasRequestedType(getContext());
+	}
+
+	/**
+	 * @param context
+	 * @return value of HasRequestedType
+	 */
+	public final java.lang.Boolean getHasRequestedType(com.mendix.systemwideinterfaces.core.IContext context)
+	{
+		return (java.lang.Boolean) getMendixObject().getValue(context, MemberNames.HasRequestedType.toString());
+	}
+
+	/**
+	 * Set value of HasRequestedType
+	 * @param hasrequestedtype
+	 */
+	public final void setHasRequestedType(java.lang.Boolean hasrequestedtype)
+	{
+		setHasRequestedType(getContext(), hasrequestedtype);
+	}
+
+	/**
+	 * Set value of HasRequestedType
+	 * @param context
+	 * @param hasrequestedtype
+	 */
+	public final void setHasRequestedType(com.mendix.systemwideinterfaces.core.IContext context, java.lang.Boolean hasrequestedtype)
+	{
+		getMendixObject().setValue(context, MemberNames.HasRequestedType.toString(), hasrequestedtype);
 	}
 
 	@java.lang.Override

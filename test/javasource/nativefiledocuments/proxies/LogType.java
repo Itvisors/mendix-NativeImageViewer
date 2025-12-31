@@ -6,10 +6,10 @@ package nativefiledocuments.proxies;
 
 public enum LogType
 {
-	Info("0190564c-4d96-4b33-952a-238fbde7020c"),
-	Error("0b190341-3efd-400d-be0d-bf0690133faa"),
-	Exception("0cc18d8d-0326-4ff4-9e3d-98552bd1e1f6"),
-	Parameters("83fdb8c4-2675-4149-8ef1-f388e1f27c98");
+	Info("f70e4597-a653-4cb3-8dbd-03c89e276182"),
+	Error("aba57ec6-4c20-4b2e-a46e-ba3e0f91381b"),
+	Exception("ab506052-038a-490a-b909-666c77e68e04"),
+	Parameters("c3332529-1256-4ca7-a14c-703742a99a9b");
 
 	private final java.lang.String i18nCaptionKey;
 	

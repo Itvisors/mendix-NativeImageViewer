@@ -1,6 +1,6 @@
 {
     "nativeDependencies": {
-        "react-native-blob-util": "0.21.2",
-        "react-native-share": "11.1.0"
+        "react-native-blob-util": "0.21.3",
+        "react-native-share": "12.0.11"
     }
 }

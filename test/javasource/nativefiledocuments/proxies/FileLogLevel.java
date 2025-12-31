@@ -6,9 +6,9 @@ package nativefiledocuments.proxies;
 
 public enum FileLogLevel
 {
-	Info("87daa717-1f4a-41cb-99e3-d559e7b5160b"),
-	Warning("640bcfc6-1b21-4647-9f3f-1ff5394b9bdf"),
-	Error("f2c9426c-aee9-4211-a1e5-f93bd7eab1b0");
+	Info("b7fa7c55-691b-4671-ba97-7b458e3f608d"),
+	Warning("5d30d8b3-9d50-4e2e-b621-93b5eba70387"),
+	Error("c75f6329-c5e3-48cf-8359-e2cd77cf9989");
 
 	private final java.lang.String i18nCaptionKey;
 	
