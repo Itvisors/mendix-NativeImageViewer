@@ -6,9 +6,9 @@ package communitycommons.proxies;
 
 public enum DatePartSelector
 {
-	year("89490c4c-aec2-4c46-b4a3-786b47c4a9de"),
-	month("75e67543-53f6-4565-8b44-ae5ac4f09865"),
-	day("6514e784-3c42-4e56-9018-e6898c1ba86a");
+	year("3b7000d7-8246-48de-adb8-6df0a804f029"),
+	month("096d307c-ce8d-4b68-a6d5-54ba3f1c903f"),
+	day("10e8daed-6088-492f-9bf8-a715e55b8ac4");
 
 	private final java.lang.String i18nCaptionKey;
 	

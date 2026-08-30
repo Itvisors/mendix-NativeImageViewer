@@ -6,13 +6,13 @@ package nativefiledocuments.proxies;
 
 public enum LogLevel
 {
-	trace("6ce437d2-feed-4260-a75c-f2d4b3a4fda3"),
-	debug("e090bdd0-aa31-4e6a-8957-4364b68a4886"),
-	info("1a9de460-6659-4dac-ab95-7450a9ad9fbb"),
-	warning("955a6dc4-af59-4aba-a024-d58ae1537283"),
-	error("0ee0f596-84e3-40bd-a93b-81056a0cee50"),
-	critical("a5709f58-0d1d-47d4-967a-65dbfb1d3bcf"),
-	none("3b176fad-1df9-4ccd-b839-9a30f55f932b");
+	trace("ff76d1e0-76ea-40a9-855b-ee2efd2ed610"),
+	debug("b9be40b8-16eb-4dc0-9e11-37486f426315"),
+	info("217eced6-20d1-4e0c-9f88-0819c4f74ca8"),
+	warning("212fef49-5011-4a39-9aee-a9777b1fda88"),
+	error("9bc9a98e-08cf-4f38-83e4-828bbb737df1"),
+	critical("22f53126-07f8-4b4f-b60e-6e814b8c3c83"),
+	none("aa4fd840-bd16-4d3c-b158-349f1d4a84e6");
 
 	private final java.lang.String i18nCaptionKey;
 	

@@ -12,7 +12,7 @@ import { Big } from "big.js";
 
 import NativeFileDocumentsUtils from "../nativefiledocumentsutils";
 import RNBlobUtil from "react-native-blob-util";
-import { Platform } from 'react-native';
+import { NativeModules, Platform } from 'react-native';
 
 // END EXTRA CODE
 
@@ -69,10 +69,15 @@ export async function saveToMendixFileDocument(filepath, pathType, fileDocument,
 		});
 	}
 
+	// Code based on NativeMobileResources.TakePicture
+
+	const fullPathWithoutFileScheme = fullPath.replace("file://", "");
+
 	return new Promise((resolve, reject) => {
-		fetch(fullPath)
-			.then(res => res.blob())
-			.then(blob => {
+		NativeModules.MxFileSystem.read(fullPathWithoutFileScheme)
+		.then((nativeBlob) => {
+			const blob = new Blob();
+			Object.assign(blob, { data: nativeBlob });
 			const onSuccess = () => resolve(true);
 			const onError = (error) => {
 				// If this fails, always write a log entry
@@ -84,8 +89,14 @@ export async function saveToMendixFileDocument(filepath, pathType, fileDocument,
 					reject(error)
 				});
 			};
+			// Set nativePayload so the patched FormData.prototype.append in NativeFileBackend
+			// replaces the blob value with { uri, name, type } for online uploads. The patch
+			// reads the third append() argument (fileName) and writes it onto nativePayload.name,
+			// which FormData.getParts() uses as the Content-Disposition filename.
+			blob.nativePayload = { uri: `file://${fullPathWithoutFileScheme}`, name: fileName, type: "*/*" };
 			mx.data.saveDocument(guid, fileName, { width: 180, height: 180 }, blob, onSuccess, onError);
-		});
+		})
+		.catch(error => reject(error));
 	});
 
 	// END USER CODE

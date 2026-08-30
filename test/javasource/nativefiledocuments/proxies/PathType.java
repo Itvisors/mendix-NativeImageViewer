@@ -6,8 +6,8 @@ package nativefiledocuments.proxies;
 
 public enum PathType
 {
-	FullPath("77e39ee1-3623-4c96-ad24-a1d1a6d15b18"),
-	DocumentsDirectory("e50aa7ba-e053-43bf-b8ad-49491048a313");
+	FullPath("381e5a67-1738-4f89-9e5f-d6a91e60bd7b"),
+	DocumentsDirectory("ba68772c-c412-4f2b-b615-e9bf7cd545f0");
 
 	private final java.lang.String i18nCaptionKey;
 	

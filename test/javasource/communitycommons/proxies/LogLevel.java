@@ -6,12 +6,12 @@ package communitycommons.proxies;
 
 public enum LogLevel
 {
-	Trace("c7c6940b-a830-4256-8711-5b6a2383895a"),
-	Debug("082f3c7b-3bc3-4633-961b-b31bd440d65f"),
-	Info("9e06ac0e-e7ac-407c-a8a4-a03a9b5c5062"),
-	Warning("461170a6-f49e-4b82-ad36-4a1580c96b9a"),
-	Error("e7bf2011-3720-4e18-9b25-069817cae1b4"),
-	Critical("eb790670-9b2d-4d49-ba9e-cb1bc41fc2a0");
+	Trace("c862224c-89bf-4098-8272-0a5a889063c6"),
+	Debug("972f5335-ceb4-433a-af44-23830f1f0d16"),
+	Info("577b1129-db5a-471b-b609-5b4d102eb139"),
+	Warning("976e226e-35c0-4f5b-82cf-946c5ed97288"),
+	Error("bcf863a9-9e97-45fe-a92b-d7c025d8d3e1"),
+	Critical("4c814b12-3ba5-4b85-b0d9-ee6ecdcbea2e");
 
 	private final java.lang.String i18nCaptionKey;
 	

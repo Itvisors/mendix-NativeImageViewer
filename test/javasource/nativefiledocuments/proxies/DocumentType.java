@@ -6,19 +6,19 @@ package nativefiledocuments.proxies;
 
 public enum DocumentType
 {
-	audio("cf0a1057-84d4-4d15-8fe8-0da6705e2c15"),
-	csv("51d05e0f-9733-4932-80c5-667f1c0913a3"),
-	doc("c412aaff-2def-4ad1-8c7a-d16c847334ba"),
-	docx("b68b1afb-3c2d-4d3c-8a30-249c7ce9b1e0"),
-	json("842c6aad-5779-46d9-a108-ba50c7508f4a"),
-	pdf("64cae957-72fa-447b-aaad-4d630f47e6c6"),
-	plainText("315eb9eb-5efa-4b33-9974-4f31f4bf8355"),
-	ppt("30a2262f-2677-42df-9c07-f47aa13c06c8"),
-	pptx("14bd1dc0-c76e-4e80-8ee7-d5d9d8c7812f"),
-	video("bca0e82f-1553-4616-97d6-56be35de401d"),
-	xls("dbc861a8-4ff0-42ff-94a1-f55fd605d6bc"),
-	xlsx("de3f91ab-4708-4ee2-bac2-65868cf1398c"),
-	zip("dda4779c-5f0d-414d-96da-44336a2cbafc");
+	audio("f1b5f6d9-685a-40b0-83cd-292fae11790a"),
+	csv("bc0f89cc-cef5-4896-bc3b-7c9fb52f1f4e"),
+	doc("ac406f4d-bba4-4881-ac32-0d908f4ca35c"),
+	docx("7453af39-993e-4e9a-8456-1c60bbcd9a28"),
+	json("9eb8530e-3641-474b-a136-c2cb0718ab52"),
+	pdf("8ff951a2-e18c-47cb-92ce-70035a26bdb0"),
+	plainText("b0416f7a-1055-4eaf-906a-f2df11485028"),
+	ppt("2f5f84b7-48b6-4324-b37c-1da9ee67dc3f"),
+	pptx("f9cc2724-8759-4f1f-b651-c6512939680d"),
+	video("861e8248-f8e1-4f59-9b2f-096db05b88a0"),
+	xls("b778eedf-0d65-4eab-910d-11cb6e86deaf"),
+	xlsx("1281b2a1-7082-4b9b-9eab-47e98caf75d7"),
+	zip("a4abd621-8f89-42c5-9ac9-24e7660bbd75");
 
 	private final java.lang.String i18nCaptionKey;
 	

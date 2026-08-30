@@ -6,8 +6,8 @@ package nativefiledocuments.proxies;
 
 public enum Platform
 {
-	android("320f7f6f-baaa-4e46-9dbf-c93bf85331f0"),
-	ios("1457330f-de5e-44cd-850d-abd2e9092fe3");
+	android("dae3e755-da85-4aec-9112-f3c3995a65ca"),
+	ios("a02bb9e3-a475-4732-a8b9-7432c88a7ce3");
 
 	private final java.lang.String i18nCaptionKey;
 	

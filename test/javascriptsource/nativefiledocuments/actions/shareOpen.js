@@ -37,11 +37,11 @@ export async function shareOpen(message, title, emailSubject, fileList) {
 		if (fileList) {
 			if (fileList.length === 1) {
 				options.url = fileList[0].get("URL");
-				options.filename = fileList[0].get("Name");
+				// options.filename = fileList[0].get("Name"); // No longer required, for base64 data only
 			}
 			if (fileList.length > 1) {
 				options.urls = fileList.map(item => item.get("URL"));
-				//options.filenames = fileList.map(item => item.get("Name")); //When adding filenames in case of multiple images it gives the error "FileType not supported" (Whatsapp) or "Cannot add attachments" (Email)
+				// options.filenames = fileList.map(item => item.get("Name")); //When adding filenames in case of multiple images it gives the error "FileType not supported" (Whatsapp) or "Cannot add attachments" (Email)
 				
 			}
 		}

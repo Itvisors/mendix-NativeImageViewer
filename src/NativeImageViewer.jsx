@@ -3,8 +3,6 @@ import { MendixImage } from "./components/MendixImage";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
 import { UrlImage } from "./components/UrlImage";
 
-import { createElement } from "react";
-
 export function NativeImageViewer({
     imageSource,
     imageToView,
